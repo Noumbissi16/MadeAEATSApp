@@ -1,0 +1,42 @@
+export default Data = [
+  {
+    id: 1,
+    logoResto: "../assets/images/logoresto.jpg",
+    nomResto: "Restaurant le Restoration",
+    town: "Bafoussam",
+    platResto: "../assets/images/resto1.jpeg",
+    desc: "Lörem ipsum rev povåd krost. Telerat krislåda. Metrologi lalogioliga det rett kontrahögisk. Jytör",
+  },
+  {
+    id: 2,
+    logoResto: "../assets/images/logoresto.jpg",
+    nomResto: "Net Net Resto",
+    town: "Douala",
+    platResto: "../assets/images/resto1.jpeg",
+    desc: "povåd krost. Telerat krislåda. Metrologi lalogioliga det rett kontrahögisk. Jytör",
+  },
+  {
+    id: 3,
+    logoResto: "../assets/images/logoresto.jpg",
+    nomResto: "Restaurant le Restoration",
+    town: "Bafoussam",
+    platResto: "../assets/images/resto1.jpeg",
+    desc: "Lörem ipsum rev povåd krost. Telerat krislåda. Metrologi lalogioliga det rett kontrahögisk. Jytör",
+  },
+  {
+    id: 4,
+    logoResto: "../assets/images/logoresto.jpg",
+    nomResto: "Restaurant le Restoration",
+    town: "Bafoussam",
+    platResto: "../assets/images/resto1.jpeg",
+    desc: "Lörem ipsum rev povåd krost. Telerat krislåda. Metrologi lalogioliga det rett kontrahögisk. Jytör",
+  },
+  {
+    id: 5,
+    logoResto: "../assets/images/logoresto.jpg",
+    nomResto: "Restaurant le Restoration",
+    town: "Bafoussam",
+    platResto: "../assets/images/resto1.jpeg",
+    desc: "Lörem ipsum rev povåd krost. Telerat krislåda. Metrologi lalogioliga det rett kontrahögisk. Jytör",
+  },
+];
