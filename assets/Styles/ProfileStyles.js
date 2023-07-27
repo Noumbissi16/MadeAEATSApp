@@ -1,9 +1,10 @@
 import { StyleSheet, Dimensions } from "react-native";
 import Colors from "../Colors/Colors";
+import { ScaledSheet } from "react-native-size-matters";
 
 const { width, height } = Dimensions.get("screen");
 
-export default StyleSheet.create({
+export default ScaledSheet.create({
   container: {
     flex: 1,
     paddingTop: height * 0.02,
@@ -12,17 +13,17 @@ export default StyleSheet.create({
   },
 
   imgProfile: {
-    borderRadius: 50,
-    width: 60,
-    height: 60,
+    borderRadius: "25@s",
+    width: "50@s",
+    height: "50@s",
   },
   titre: {
     fontFamily: "Montserrat_500Medium",
-    fontSize: 18,
+    fontSize: "17@s",
   },
   sousTitre: {
     fontFamily: "Montserrat_500Medium",
-    fontSize: 12,
+    fontSize: "10@s",
   },
   rowFlex: {
     flexDirection: "row",
@@ -33,6 +34,6 @@ export default StyleSheet.create({
     width: width * 0.9,
     borderWidth: 0.35,
     borderColor: Colors.grey,
-    marginVertical: 12,
+    marginVertical: "12@s",
   },
 });

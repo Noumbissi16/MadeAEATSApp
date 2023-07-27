@@ -1,9 +1,10 @@
 import { StyleSheet, Dimensions } from "react-native";
 import Colors from "../Colors/Colors";
+import { ScaledSheet } from "react-native-size-matters";
 
 const { width, height } = Dimensions.get("screen");
 
-export default StyleSheet.create({
+export default ScaledSheet.create({
   container: {
     flex: 1,
     paddingTop: height * 0.02,
@@ -13,42 +14,45 @@ export default StyleSheet.create({
   card: {
     width: width * 0.9,
     backgroundColor: Colors.white,
-    borderRadius: 25,
-    marginBottom: 15,
+    borderRadius: "25@s",
+    marginBottom: "15@s",
     elevation: 2,
   },
 
   statusCommande: {
     fontFamily: "Montserrat_600SemiBold",
-    fontSize: 20,
-    marginBottom: 15,
+    fontSize: "20@s",
+    marginBottom: "15@s",
   },
   idCommande: {
     alignSelf: "flex-end",
-    marginTop: 14,
-    marginRight: 19,
+    marginTop: "14@s",
+    marginRight: "19@s",
     fontFamily: "Montserrat_600SemiBold",
-    fontSize: 12,
+    fontSize: "12@s",
     color: Colors.primary500,
+    marginBottom: "5@s",
   },
   imgPlat: {
-    width: 60,
-    height: 60,
+    width: width * 0.175,
+    height: width * 0.175,
+    resizeMode: "contain",
+    borderRadius: "8@s",
   },
   imgContainer: {
     backgroundColor: Colors.white,
-    width: 78,
-    height: 78,
+    width: "78@s",
+    height: "78@s",
     elevation: 4,
     alignItems: "center",
     justifyContent: "center",
-    marginLeft: 18,
-    borderRadius: 12,
-    marginRight: 10,
+    marginLeft: "18@s",
+    borderRadius: "12@s",
+    marginRight: width * 0.075,
   },
   nomPlat: {
     fontFamily: "Montserrat_600SemiBold",
-    fontSize: 18,
+    fontSize: "18@s",
     textAlign: "center",
   },
   nomResto: {
@@ -57,85 +61,85 @@ export default StyleSheet.create({
   },
   rowFlex: {
     flexDirection: "row",
-    alignItems: "center",
+    alignItems: "flex-start",
+    flexWrap: "wrap",
   },
   locPlat: {
     fontFamily: "Montserrat_300Light",
-    fontSize: 12,
+    fontSize: "12@s",
   },
   btn: {
-    marginTop: 16,
+    marginTop: "8@s",
     alignItems: "center",
-    paddingVertical: 18,
-    paddingHorizontal: 98,
+    paddingVertical: "17@s",
     backgroundColor: Colors.secondary500,
-    borderBottomRightRadius: 25,
-    borderBottomLeftRadius: 25,
+    borderBottomRightRadius: "25@s",
+    borderBottomLeftRadius: "25@s",
   },
   btnText: {
-    marginLeft: 5,
     fontFamily: "Montserrat_500Medium",
-    fontSize: 14,
+    fontSize: "15@s",
     color: Colors.white,
+    alignSelf: "center",
   },
   prix_Temp: {
     fontFamily: "Montserrat_500Medium",
-    fontSize: 13,
+    fontSize: "13@s",
     color: Colors.secondary600,
   },
   prix_TempQte: {
     fontFamily: "Montserrat_600SemiBold",
-    fontSize: 35,
+    fontSize: "28@s",
   },
   small: {
     fontFamily: "Montserrat_400Regular",
-    fontSize: 15,
+    fontSize: "15@s",
   },
   flexSpace: {
-    marginTop: 12,
+    marginTop: "12@s",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-evenly",
   },
   flexSpaceCommande: {
-    marginHorizontal: 18,
-    marginTop: 12,
-    marginBottom: 10,
+    marginHorizontal: "18@s",
+    marginTop: "12@s",
+    marginBottom: "10@s",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
   },
   dateCommande: {
     fontFamily: "Montserrat_300Light",
-    fontSize: 12,
+    fontSize: "12@s",
   },
   statusLivrer: {
     fontFamily: "Montserrat_400Regular",
-    fontSize: 12,
+    fontSize: "12@s",
     color: Colors.secondary400,
   },
   prixCommand: {
-    marginLeft: 32,
     fontFamily: "Montserrat_400Regular",
-    fontSize: 13,
+    fontSize: "13@s",
     color: Colors.primary500,
+    marginTop: "10@s",
   },
   bntFlex: {
-    marginVertical: 15,
+    marginVertical: "15@s",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-evenly",
   },
   btnDetails: {
-    paddingHorizontal: 43,
-    paddingVertical: 12,
+    paddingHorizontal: width * 0.075,
+    paddingVertical: "12@s",
     elevation: 1,
     backgroundColor: Colors.white,
-    borderRadius: 25,
+    borderRadius: "25@s",
   },
   btnDetailsTxt: {
     fontFamily: "Montserrat_400Regular",
-    fontSize: 13,
+    fontSize: "13@s",
   },
   btnReccomander: {
     backgroundColor: Colors.primary500,

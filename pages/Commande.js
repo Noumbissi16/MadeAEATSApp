@@ -11,18 +11,25 @@ import CommandStyles from "../assets/Styles/CommandStyles";
 import CommandeEnCour from "../components/CommandeEnCour";
 import CommandeRecente from "../components/CommandeRecente";
 
-const Commande = () => {
+const Commande = ({ navigation }) => {
+  const handleBtnReccomander = () => {
+    navigation.navigate("CommanderRepas");
+  };
+  const handleBtnDetail = () => {
+    navigation.navigate("Details Commande");
+  };
   return (
     <View style={CommandStyles.container}>
-      <Text style={CommandStyles.statusCommande}>En cours de livraison</Text>
       <ScrollView showsVerticalScrollIndicator={false}>
+        <Text style={CommandStyles.statusCommande}>En cours de livraison</Text>
         <CommandeEnCour />
         <Text style={CommandStyles.statusCommande}>Commande récente</Text>
-        <CommandeRecente />
-        <CommandeRecente />
-        <CommandeRecente />
-        <CommandeRecente />
-        <CommandeRecente />
+        <CommandeRecente
+          handleBtnReccomander={handleBtnReccomander}
+          handleBtnDetail={handleBtnDetail}
+        />
+        <CommandeRecente handleBtnReccomander={handleBtnReccomander} />
+        <CommandeRecente handleBtnReccomander={handleBtnReccomander} />
       </ScrollView>
     </View>
   );

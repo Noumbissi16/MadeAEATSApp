@@ -5,33 +5,50 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  Platform,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 //
 import AccueilStyles from "../assets/Styles/AccueilStyles";
 import DATA from "../assets/data";
 import CardRestaurant from "../components/CardRestaurant";
+import { Searchbar } from "react-native-paper";
+import * as Location from "expo-location";
 //
 const Accueil = ({ navigation }) => {
-  const handleSearch = () => {
-    console.log(searchText);
+  const [location, setLocation] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        setErrorMsg("Permission to access location was denied");
+        return;
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      // console.log(location);
+      setLocation(location);
+    })();
+  }, []);
+  // console.log(location);
+  const handleSearch = (text) => {
+    setSearchText(text);
   };
   const handleBtnPress = () => {
     navigation.navigate("CommanderRepas");
   };
-  const [searchText, setSearchText] = useState();
+  const [searchText, setSearchText] = useState("");
   return (
     <View style={AccueilStyles.container}>
       <View>
-        <TextInput
+        <Searchbar
           style={AccueilStyles.searchInput}
-          placeholder="Recherchez un repas ou restaurant"
+          placeholder="Search"
           value={searchText}
-          onChangeText={setSearchText}
-          returnKeyType="search"
-          onSubmitEditing={handleSearch}
-          autoCapitalize="none"
+          onChangeText={handleSearch}
         />
       </View>
 

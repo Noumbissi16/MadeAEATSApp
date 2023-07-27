@@ -1,23 +1,24 @@
 import { StyleSheet, Dimensions } from "react-native";
 import Colors from "../Colors/Colors";
+import { ScaledSheet } from "react-native-size-matters";
 
 const { width, height } = Dimensions.get("screen");
 
-export default StyleSheet.create({
+export default ScaledSheet.create({
   container: {
     flex: 1,
     paddingTop: height * 0.02,
     paddingHorizontal: width * 0.05,
     backgroundColor: Colors.background,
   },
+  modalContainer: { flex: 1 },
   card: {
     width: width * 0.75,
-    backgroundColor: Colors.secondary400,
-    borderRadius: 25,
-    marginBottom: 15,
+    backgroundColor: Colors.primary600,
+    borderRadius: "25@s",
+    marginBottom: "15@s",
     alignItems: "center",
-    padding: 15,
-    marginTop: 15,
+    padding: "15@s",
     alignSelf: "center",
   },
 
@@ -26,22 +27,23 @@ export default StyleSheet.create({
     alignItems: "baseline",
   },
   imgProfile: {
-    width: 90,
-    height: 90,
-    borderRadius: 50,
+    width: "60@s",
+    height: "60@s",
+    borderRadius: "50@s",
+    // resizeMode: "contain",
   },
   nomUser: {
     fontFamily: "Montserrat_600SemiBold",
-    fontSize: 18,
+    fontSize: "15@s",
     color: Colors.white,
-    marginTop: 15,
+    marginTop: "13@s",
   },
   icon: {
     marginRight: -45,
     position: "absolute",
-    left: 65,
-    right: 55,
-    top: 70,
+    left: "45@s",
+    right: "55@s",
+    top: "40@s",
   },
   compteCardFlex: {
     flexDirection: "row",
@@ -49,27 +51,29 @@ export default StyleSheet.create({
   },
   modifyCompteCard: {
     backgroundColor: Colors.white,
-    borderRadius: 15,
-    flexDirection: "row",
-    paddingVertical: 25,
+    borderRadius: "15@s",
+    // flexDirection: "row",
+    paddingVertical: "18@s",
     justifyContent: "space-between",
-    alignItems: "flex-end",
-    paddingHorizontal: 15,
+    // alignItems: "flex-end",
+    paddingHorizontal: "15@s",
     elevation: 1,
-    marginBottom: 10,
+    marginBottom: "10@s",
   },
   email: {
     fontFamily: "Montserrat_600SemiBold",
-    fontSize: 16,
+    fontSize: "13@s",
   },
   userMail: {
     fontFamily: "Montserrat_600SemiBold",
-    fontSize: 13,
+    fontSize: "11@s",
     color: Colors.secondary300,
   },
   modify: {
     fontFamily: "Montserrat_600SemiBold",
-    fontSize: 13,
+    fontSize: "12@s",
     color: Colors.primary700,
+    marginTop: "4@s",
+    alignSelf: "flex-end",
   },
 });

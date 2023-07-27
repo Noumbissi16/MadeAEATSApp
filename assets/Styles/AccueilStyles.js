@@ -1,9 +1,10 @@
 import { StyleSheet, Dimensions } from "react-native";
 import Colors from "../Colors/Colors";
+import { ScaledSheet } from "react-native-size-matters";
 
 const { width, height } = Dimensions.get("screen");
 
-export default StyleSheet.create({
+export default ScaledSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
@@ -14,12 +15,8 @@ export default StyleSheet.create({
   searchInput: {
     borderColor: Colors.grey,
     borderWidth: 1,
-    padding: 8,
-    paddingLeft: 15,
     width: width * 0.8,
     backgroundColor: Colors.white,
-    borderRadius: 25,
-    height: height * 0.05,
     marginBottom: height * 0.02,
   },
   card: {
@@ -27,8 +24,8 @@ export default StyleSheet.create({
     width: width * 0.9,
     padding: height * 0.02,
     marginBottom: height * 0.02,
-    borderRadius: 8,
-    elevation: 5,
+    borderRadius: "8@s",
+    elevation: "5@s",
   },
   rowFlex: {
     flexDirection: "row",
@@ -38,47 +35,47 @@ export default StyleSheet.create({
   logoRestoImg: {
     width: width * 0.125,
     height: width * 0.125,
-    borderRadius: 25,
+    borderRadius: "25@s",
   },
   imageRepas: {
-    borderRadius: 25,
-    marginTop: 10,
-    marginBottom: 10,
+    borderRadius: "25@s",
+    marginTop: "10@s",
+    marginBottom: "10@s",
     width: width * 0.8,
     height: height * 0.125,
   },
   headerTextFlex: {
-    marginLeft: 12,
+    marginLeft: "12@s",
     alignItems: "flex-start",
   },
   nameResto: {
-    marginLeft: 5,
+    marginLeft: "5@s",
     fontFamily: "Montserrat_500Medium",
-    fontSize: 16,
+    fontSize: "16@s",
   },
   townResto: {
     fontFamily: "Montserrat_300Light",
-    fontSize: 14,
+    fontSize: "14@s",
   },
   descResto: {
     textAlign: "justify",
     fontFamily: "Montserrat_500Medium",
-    marginBottom: 10,
+    marginBottom: "10@s",
   },
   btn: {
     backgroundColor: Colors.primary500,
-    padding: 10,
+    padding: "10@s",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     alignSelf: "center",
-    width: width * 0.65,
-    borderRadius: 25,
+    width: width * 0.6,
+    borderRadius: "25@s",
   },
   btnText: {
-    marginLeft: 5,
+    marginLeft: "5@s",
     fontFamily: "Montserrat_400Regular",
-    fontSize: 20,
+    fontSize: "16@s",
     color: Colors.white,
   },
 });

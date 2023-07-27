@@ -13,7 +13,7 @@ import CardBoutique from "../components/CardBoutique";
 
 const Boutique = ({ navigation }) => {
   const handleBtnPress = () => {
-    navigation.navigate("Menu Boutique");
+    navigation.navigate("Menu Restaurant");
   };
   return (
     <View style={BoutiqueStyles.container}>

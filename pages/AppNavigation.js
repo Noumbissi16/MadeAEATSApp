@@ -11,6 +11,7 @@ import Boutique from "./Boutique";
 import Profile from "./Profile";
 import BottomTapHeaderStyles from "../assets/Styles/BottomTapHeaderStyles";
 import Colors from "../assets/Colors/Colors";
+import { scale } from "react-native-size-matters";
 
 //
 const Tab = createBottomTabNavigator();
@@ -25,12 +26,16 @@ const AppNavigation = () => {
         shifting={true}
         screenOptions={{
           tabBarHideOnKeyboard: true,
-          tabBarStyle: { paddingBottom: 5, paddingTop: 5, height: 60 },
+          tabBarStyle: {
+            paddingBottom: scale(5),
+            paddingTop: scale(5),
+            height: scale(60),
+          },
           tabBarActiveTintColor: Colors.white,
           tabBarInactiveTintColor: Colors.white,
-          tabBarItemStyle: { borderRadius: 25 },
+          tabBarItemStyle: { borderRadius: scale(25) },
           tabBarActiveBackgroundColor: Colors.primary700,
-          headerTitle: "MadeAEATS",
+          headerTitle: "MadeAEat",
           headerTintColor: Colors.white,
           headerTitleStyle: BottomTapHeaderStyles.commonTitle,
           headerStyle: { backgroundColor: Colors.primary700 },
@@ -42,15 +47,23 @@ const AppNavigation = () => {
           options={{
             tabBarIcon: (icon) => {
               return icon.focused ? (
-                <FontAwesome name="home" size={25} color={Colors.white} />
+                <FontAwesome
+                  name="home"
+                  size={scale(24)}
+                  color={Colors.white}
+                />
               ) : (
-                <FontAwesome name="home" size={22} color={Colors.primary800} />
+                <FontAwesome
+                  name="home"
+                  size={scale(20)}
+                  color={Colors.primary800}
+                />
               );
             },
             // tabBarBadge: "1",
             headerRight: () => (
               <View style={BottomTapHeaderStyles.headerRight}>
-                <Text style={BottomTapHeaderStyles.pageText}>Restaurant</Text>
+                <Text style={BottomTapHeaderStyles.pageText}>Accueil</Text>
                 <View style={BottomTapHeaderStyles.sideBar} />
               </View>
             ),
@@ -64,13 +77,13 @@ const AppNavigation = () => {
               return icon.focused ? (
                 <FontAwesome5
                   name="shopping-cart"
-                  size={22}
+                  size={scale(20)}
                   color={Colors.white}
                 />
               ) : (
                 <FontAwesome5
                   name="shopping-cart"
-                  size={18}
+                  size={scale(16)}
                   color={Colors.primary800}
                 />
               );
@@ -84,23 +97,27 @@ const AppNavigation = () => {
           }}
         />
         <Tab.Screen
-          name="Boutique"
+          name="Restaurant"
           component={Boutique}
           options={{
             tabBarIcon: (icon) => {
               return icon.focused ? (
-                <FontAwesome5 name="store-alt" size={22} color={Colors.white} />
+                <FontAwesome5
+                  name="store-alt"
+                  size={scale(18)}
+                  color={Colors.white}
+                />
               ) : (
                 <FontAwesome5
                   name="store-alt"
-                  size={17}
+                  size={scale(15)}
                   color={Colors.primary800}
                 />
               );
             },
             headerRight: () => (
               <View style={BottomTapHeaderStyles.headerRight}>
-                <Text style={BottomTapHeaderStyles.pageText}>Boutique</Text>
+                <Text style={BottomTapHeaderStyles.pageText}>Restaurant </Text>
                 <View style={BottomTapHeaderStyles.sideBar} />
               </View>
             ),
@@ -112,9 +129,17 @@ const AppNavigation = () => {
           options={{
             tabBarIcon: (icon) => {
               return icon.focused ? (
-                <FontAwesome name="user" size={25} color={Colors.white} />
+                <FontAwesome
+                  name="user"
+                  size={scale(23)}
+                  color={Colors.white}
+                />
               ) : (
-                <FontAwesome name="user" size={20} color={Colors.primary800} />
+                <FontAwesome
+                  name="user"
+                  size={scale(18)}
+                  color={Colors.primary800}
+                />
               );
             },
             headerRight: () => (

@@ -3,6 +3,7 @@ import React from "react";
 import ProfileStyles from "../assets/Styles/ProfileStyles";
 import { AntDesign, FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import Colors from "../assets/Colors/Colors";
+import { scale } from "react-native-size-matters";
 
 const Profile = ({ navigation }) => {
   return (
@@ -30,7 +31,7 @@ const Profile = ({ navigation }) => {
       <View style={ProfileStyles.line} />
       <TouchableOpacity>
         <View style={ProfileStyles.rowFlex}>
-          <AntDesign name="customerservice" size={45} color="black" />
+          <AntDesign name="customerservice" size={scale(35)} color="black" />
           <View>
             <Text style={ProfileStyles.titre}>Contactez-nous</Text>
           </View>
@@ -45,7 +46,7 @@ const Profile = ({ navigation }) => {
       <View style={ProfileStyles.line} />
       <TouchableOpacity>
         <View style={ProfileStyles.rowFlex}>
-          <MaterialIcons name="add-business" size={45} color="black" />
+          <MaterialIcons name="add-business" size={scale(35)} color="black" />
           <View>
             <Text style={ProfileStyles.titre}>Ajouter votre restaurant</Text>
           </View>

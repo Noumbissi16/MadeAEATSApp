@@ -2,7 +2,7 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import CommandStyles from "../assets/Styles/CommandStyles";
 
-const CommandeRecente = () => {
+const CommandeRecente = ({ handleBtnReccomander, handleBtnDetail }) => {
   return (
     <View style={CommandStyles.card}>
       <View style={CommandStyles.flexSpaceCommande}>
@@ -18,20 +18,26 @@ const CommandeRecente = () => {
           />
         </View>
         <View>
-          <Text style={CommandStyles.nomPlat}>Poisson braiser</Text>
-          <Text style={CommandStyles.locPlat}>
-            De chez
-            <Text style={CommandStyles.nomResto}> Net Net braise</Text>
-          </Text>
+          <View>
+            <Text style={CommandStyles.nomPlat}>Poisson braiser</Text>
+            <Text style={CommandStyles.locPlat}>
+              De chez
+              <Text style={CommandStyles.nomResto}> Net Net braise</Text>
+            </Text>
+          </View>
+          <Text style={CommandStyles.prixCommand}>1800F cfa </Text>
         </View>
-        <Text style={CommandStyles.prixCommand}>1800F cfa</Text>
       </View>
       <View style={CommandStyles.bntFlex}>
-        <TouchableOpacity style={CommandStyles.btnDetails}>
+        <TouchableOpacity
+          style={CommandStyles.btnDetails}
+          onPress={handleBtnDetail}
+        >
           <Text style={CommandStyles.btnDetailsTxt}>Details</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[CommandStyles.btnDetails, CommandStyles.btnReccomander]}
+          onPress={handleBtnReccomander}
         >
           <Text
             style={[

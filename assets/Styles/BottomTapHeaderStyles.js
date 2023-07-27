@@ -1,12 +1,13 @@
 import { StyleSheet, Dimensions } from "react-native";
 import Colors from "../Colors/Colors";
+import { ScaledSheet } from "react-native-size-matters";
 
 const { width, height } = Dimensions.get("screen");
 
-export default StyleSheet.create({
+export default ScaledSheet.create({
   commonTitle: {
     fontFamily: "Montserrat_600SemiBold",
-    fontSize: 22,
+    fontSize: "20@s",
   },
   headerRight: {
     marginRight: width * 0.05,
@@ -22,8 +23,8 @@ export default StyleSheet.create({
     backgroundColor: Colors.white,
   },
   pageText: {
-    fontFamily: "Montserrat_500Medium",
-    fontSize: 15,
+    fontFamily: "Montserrat_400Regular",
+    fontSize: "14@s",
     color: Colors.white,
   },
 });

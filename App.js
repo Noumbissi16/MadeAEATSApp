@@ -35,6 +35,8 @@ import Colors from "./assets/Colors/Colors";
 import CommandeRepas from "./pages/CommandeRepas";
 import ModifierProfile from "./pages/ModifierProfile";
 import MenuBoutique from "./pages/MenuBoutique";
+import PayementRepas from "./pages/PayementRepas";
+import DetailsCommande from "./pages/DetailsCommande";
 //
 // for splash screen to load all app content before stop displaying
 SplashScreen.preventAutoHideAsync();
@@ -125,8 +127,24 @@ export default function App() {
             }}
           />
           <Stack.Screen
-            name="Menu Boutique"
+            name="Menu Restaurant"
             component={MenuBoutique}
+            options={{
+              headerTintColor: "white",
+              headerStyle: { backgroundColor: Colors.primary700 },
+            }}
+          />
+          <Stack.Screen
+            name="Payer votre repas"
+            component={PayementRepas}
+            options={{
+              headerTintColor: "white",
+              headerStyle: { backgroundColor: Colors.primary700 },
+            }}
+          />
+          <Stack.Screen
+            name="Details Commande"
+            component={DetailsCommande}
             options={{
               headerTintColor: "white",
               headerStyle: { backgroundColor: Colors.primary700 },

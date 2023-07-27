@@ -1,9 +1,10 @@
 import { StyleSheet, Dimensions } from "react-native";
 import Colors from "../Colors/Colors";
+import { ScaledSheet } from "react-native-size-matters";
 
 const { width, height } = Dimensions.get("screen");
 
-export default StyleSheet.create({
+export default ScaledSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
@@ -14,19 +15,19 @@ export default StyleSheet.create({
   card: {
     width: width * 0.9,
     backgroundColor: Colors.white,
-    borderRadius: 25,
-    marginBottom: 15,
+    borderRadius: "25@s",
+    marginBottom: "15@s",
   },
   imgBoutique: {
-    borderTopRightRadius: 25,
-    borderTopLeftRadius: 25,
+    borderTopRightRadius: "25@s",
+    borderTopLeftRadius: "25@s",
     width: width * 0.9,
   },
   nomResto: {
     fontFamily: "Montserrat_600SemiBold",
-    fontSize: 18,
+    fontSize: "18@s",
     textAlign: "center",
-    marginVertical: 8,
+    marginVertical: "5@s",
   },
   rowFlex: {
     flexDirection: "row",
@@ -38,21 +39,30 @@ export default StyleSheet.create({
   },
   precLocation: {
     fontFamily: "Montserrat_300Light",
-    fontSize: 12,
+    fontSize: "12@s",
+    textAlign: "justify",
+    marginRight: "35@s",
   },
   btn: {
-    marginTop: 16,
+    marginTop: "16@s",
     alignItems: "center",
-    paddingVertical: 18,
-    paddingHorizontal: 98,
+    paddingVertical: "17@s",
     backgroundColor: Colors.primary500,
-    borderBottomRightRadius: 25,
-    borderBottomLeftRadius: 25,
+    borderBottomRightRadius: "25@s",
+    borderBottomLeftRadius: "25@s",
   },
   btnText: {
-    marginLeft: 5,
+    marginLeft: "5@s",
     fontFamily: "Montserrat_400Regular",
-    fontSize: 18,
+    fontSize: "17@s",
     color: Colors.white,
+  },
+  imgProfile: {
+    borderRadius: "25@s",
+    width: "45@s",
+    height: "45@s",
+  },
+  icon: {
+    alignSelf: "flex-start",
   },
 });
