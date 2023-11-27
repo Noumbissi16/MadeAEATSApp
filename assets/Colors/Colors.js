@@ -1,8 +1,8 @@
 export default {
   black: "#000000",
-  grey: "#D9D9D9",
+  grey: "#6D7D8B",
   white: "#FFFFFF",
-  background: "#F3FCF6",
+  background: "#E7F9ED",
   primary100: "#CFF3DA",
   primary200: "#9FE6B5",
   primary300: "#6FDA91",
@@ -20,4 +20,6 @@ export default {
   secondary700: "#610B0A",
   secondary800: "#400707",
   secondary900: "#200403",
+  lightGrey: "#BBC8D4",
+  extraLightGrey: "#DAE3EA",
 };

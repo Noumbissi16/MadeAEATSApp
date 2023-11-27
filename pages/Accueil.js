@@ -1,20 +1,11 @@
-import {
-  FlatList,
-  Image,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-  Platform,
-} from "react-native";
+import { FlatList, View } from "react-native";
 import React, { useState, useEffect } from "react";
-import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 //
 import AccueilStyles from "../assets/Styles/AccueilStyles";
-import DATA from "../assets/data";
 import CardRestaurant from "../components/CardRestaurant";
 import { Searchbar } from "react-native-paper";
 import * as Location from "expo-location";
+import restaurantData from "../assets/data/restaurantData";
 //
 const Accueil = ({ navigation }) => {
   const [location, setLocation] = useState(null);
@@ -46,7 +37,7 @@ const Accueil = ({ navigation }) => {
       <View>
         <Searchbar
           style={AccueilStyles.searchInput}
-          placeholder="Search"
+          placeholder="Rechercher un repas"
           value={searchText}
           onChangeText={handleSearch}
         />
@@ -54,7 +45,7 @@ const Accueil = ({ navigation }) => {
 
       <FlatList
         showsVerticalScrollIndicator={false}
-        data={DATA}
+        data={restaurantData}
         renderItem={({ item }) => {
           return <CardRestaurant item={item} handleBtnPress={handleBtnPress} />;
         }}

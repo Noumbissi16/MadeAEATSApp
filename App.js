@@ -1,8 +1,8 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
 import { useCallback } from "react";
-import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { Provider } from "react-redux";
 import * as SplashScreen from "expo-splash-screen";
 import {
   useFonts,
@@ -26,17 +26,9 @@ import {
   Montserrat_900Black_Italic,
 } from "@expo-google-fonts/montserrat";
 //
-import Inscription from "./pages/Inscription";
-import Presentation from "./pages/presentation";
-import Connexion from "./pages/Connexion";
-import Accueil from "./pages/Accueil";
-import AppNavigation from "./pages/AppNavigation";
-import Colors from "./assets/Colors/Colors";
-import CommandeRepas from "./pages/CommandeRepas";
-import ModifierProfile from "./pages/ModifierProfile";
-import MenuBoutique from "./pages/MenuBoutique";
-import PayementRepas from "./pages/PayementRepas";
-import DetailsCommande from "./pages/DetailsCommande";
+import store from "./redux-store/store";
+import Navigation from "./navigation/navigation";
+
 //
 // for splash screen to load all app content before stop displaying
 SplashScreen.preventAutoHideAsync();
@@ -83,76 +75,12 @@ export default function App() {
     return null;
   }
   return (
-    <View style={styles.container} onLayout={onLayoutRootView}>
-      <StatusBar style="auto" />
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen
-            name="Presentation"
-            component={Presentation}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Page Inscription"
-            component={Inscription}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Page Connexion"
-            component={Connexion}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="AppNavigation"
-            component={AppNavigation}
-            options={{
-              headerStyle: { backgroundColor: Colors.secondary400 },
-              headerShown: false,
-            }}
-          />
-          <Stack.Screen
-            name="CommanderRepas"
-            component={CommandeRepas}
-            options={{
-              headerTintColor: "white",
-              headerStyle: { backgroundColor: Colors.primary700 },
-            }}
-          />
-          <Stack.Screen
-            name="Modifier Profile"
-            component={ModifierProfile}
-            options={{
-              headerTintColor: "white",
-              headerStyle: { backgroundColor: Colors.primary700 },
-            }}
-          />
-          <Stack.Screen
-            name="Menu Restaurant"
-            component={MenuBoutique}
-            options={{
-              headerTintColor: "white",
-              headerStyle: { backgroundColor: Colors.primary700 },
-            }}
-          />
-          <Stack.Screen
-            name="Payer votre repas"
-            component={PayementRepas}
-            options={{
-              headerTintColor: "white",
-              headerStyle: { backgroundColor: Colors.primary700 },
-            }}
-          />
-          <Stack.Screen
-            name="Details Commande"
-            component={DetailsCommande}
-            options={{
-              headerTintColor: "white",
-              headerStyle: { backgroundColor: Colors.primary700 },
-            }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </View>
+    <Provider store={store}>
+      <View style={styles.container} onLayout={onLayoutRootView}>
+        <StatusBar style="auto" />
+        <Navigation />
+      </View>
+    </Provider>
   );
 }
 

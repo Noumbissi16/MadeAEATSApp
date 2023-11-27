@@ -2,31 +2,43 @@ import {
   View,
   Text,
   TextInput,
-  StyleSheet,
   Dimensions,
   Image,
   TouchableOpacity,
   KeyboardAvoidingView,
-  Platform,
   ScrollView,
 } from "react-native";
 import React, { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 //
-import Colors from "../assets/Colors/Colors";
 import AppStyles from "../assets/Styles/AppStyles";
 import InscriptionStyles from "../assets/Styles/InscriptionStyles";
+import { useDispatch } from "react-redux";
+import { addUser } from "../redux-store/actions/User/addUser";
 //
 const { width } = Dimensions.get("screen");
 
 const Inscription = ({ navigation }) => {
   const [nom, setNom] = useState("");
   const [email, setEmail] = useState("");
+  const [age, setAge] = useState();
   const [motDePasse, setMotDePasse] = useState("");
   const [showMotDePasse, setShowMotDePasse] = useState(false);
   const toggleShowMotDePasse = () => {
     setShowMotDePasse(!showMotDePasse);
   };
+  const dispatch = useDispatch();
+
+  const user = {
+    nom,
+    email,
+    motDePasse,
+  };
+
+  const handleInscription = () => {
+    dispatch(addUser(user));
+  };
+
   return (
     <View style={InscriptionStyles.container}>
       <View style={AppStyles.contentMargin}>
@@ -54,6 +66,17 @@ const Inscription = ({ navigation }) => {
               />
             </KeyboardAvoidingView>
           </View>
+          {/* <View style={InscriptionStyles.inputFlex}>
+            <KeyboardAvoidingView>
+              <Text style={InscriptionStyles.inputText}>Age</Text>
+              <TextInput
+                style={InscriptionStyles.textInput}
+                value={age}
+                onChangeText={(text) => setAge(text)}
+                keyboardType="number-pad"
+              />
+            </KeyboardAvoidingView>
+          </View> */}
           <View style={InscriptionStyles.inputFlex}>
             <KeyboardAvoidingView>
               <Text style={InscriptionStyles.inputText}>Mots de passe</Text>
@@ -79,7 +102,7 @@ const Inscription = ({ navigation }) => {
           </View>
           <View style={{ alignItems: "center" }}>
             <TouchableOpacity
-              onPress={() => navigation.replace("AppNavigation")}
+              onPress={handleInscription}
               style={InscriptionStyles.button}
             >
               <Text style={InscriptionStyles.buttonText}>S'inscrire</Text>
@@ -121,7 +144,6 @@ const Inscription = ({ navigation }) => {
               }}
             ></View>
           </View>
-
           <View style={InscriptionStyles.logoFlex}>
             <TouchableOpacity onPress={() => console.log("pressed facebook")}>
               <View style={InscriptionStyles.singleLogoFlex}>

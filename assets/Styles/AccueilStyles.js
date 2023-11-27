@@ -13,11 +13,12 @@ export default ScaledSheet.create({
     backgroundColor: Colors.background,
   },
   searchInput: {
-    borderColor: Colors.grey,
+    borderColor: Colors.extraLightGrey,
     borderWidth: 1,
     width: width * 0.8,
     backgroundColor: Colors.white,
     marginBottom: height * 0.02,
+    color: Colors.lightGrey,
   },
   card: {
     backgroundColor: Colors.white,
@@ -56,14 +57,17 @@ export default ScaledSheet.create({
   townResto: {
     fontFamily: "Montserrat_300Light",
     fontSize: "14@s",
+    color: Colors.grey,
   },
   descResto: {
     textAlign: "justify",
     fontFamily: "Montserrat_500Medium",
     marginBottom: "10@s",
+    color: Colors.grey,
+    lineHeight: "20@s",
   },
   btn: {
-    backgroundColor: Colors.primary500,
+    backgroundColor: Colors.primary600,
     padding: "10@s",
     flexDirection: "row",
     justifyContent: "center",

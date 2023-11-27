@@ -7,10 +7,7 @@ const CardRestaurant = ({ item, handleBtnPress }) => {
   return (
     <View style={AccueilStyles.card}>
       <View style={[AccueilStyles.rowFlex]}>
-        <Image
-          style={AccueilStyles.logoRestoImg}
-          source={require("../assets/images/logoresto.jpg")}
-        />
+        <Image style={AccueilStyles.logoRestoImg} source={item.imgResto} />
 
         <View style={AccueilStyles.headerTextFlex}>
           <Text style={AccueilStyles.nameResto}>{item.nomResto}</Text>
