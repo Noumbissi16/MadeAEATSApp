@@ -5,7 +5,25 @@ const initialState = {
 };
 
 const reducerNotification = (state = initialState, action) => {
-  return state;
+  switch (action.type) {
+    case "READ_NOTIFICATION":
+      const idNotif = action.notification.id;
+
+      // Create a shallow copy of the notification array
+      const updatedNotifications = state.notification.map((notification) =>
+        notification.id === idNotif
+          ? { ...notification, vu: true }
+          : notification
+      );
+
+      return {
+        ...state,
+        notification: updatedNotifications,
+      };
+
+    default:
+      return state;
+  }
 };
 
 export default reducerNotification;

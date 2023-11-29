@@ -2,7 +2,7 @@ export default {
   black: "#000000",
   grey: "#6D7D8B",
   white: "#FFFFFF",
-  background: "#E7F9ED",
+  background: "#F3FCF6",
   primary100: "#CFF3DA",
   primary200: "#9FE6B5",
   primary300: "#6FDA91",

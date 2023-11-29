@@ -28,6 +28,7 @@ import {
 //
 import store from "./redux-store/store";
 import Navigation from "./navigation/navigation";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 //
 // for splash screen to load all app content before stop displaying
@@ -77,8 +78,10 @@ export default function App() {
   return (
     <Provider store={store}>
       <View style={styles.container} onLayout={onLayoutRootView}>
-        <StatusBar style="auto" />
-        <Navigation />
+        <GestureHandlerRootView style={{ flex: 1 }}>
+          <StatusBar style="auto" />
+          <Navigation />
+        </GestureHandlerRootView>
       </View>
     </Provider>
   );

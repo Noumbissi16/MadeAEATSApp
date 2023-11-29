@@ -12,6 +12,7 @@ import Profile from "./Profile";
 import BottomTapHeaderStyles from "../assets/Styles/BottomTapHeaderStyles";
 import Colors from "../assets/Colors/Colors";
 import { scale } from "react-native-size-matters";
+import Notification from "./Notification";
 
 //
 const Tab = createBottomTabNavigator();
@@ -91,6 +92,33 @@ const AppNavigation = () => {
             headerRight: () => (
               <View style={BottomTapHeaderStyles.headerRight}>
                 <Text style={BottomTapHeaderStyles.pageText}>Commande</Text>
+                <View style={BottomTapHeaderStyles.sideBar} />
+              </View>
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Notification"
+          component={Notification}
+          options={{
+            tabBarIcon: (icon) => {
+              return icon.focused ? (
+                <Ionicons
+                  name="notifications"
+                  size={scale(25)}
+                  color={Colors.white}
+                />
+              ) : (
+                <Ionicons
+                  name="notifications"
+                  size={scale(20)}
+                  color={Colors.primary800}
+                />
+              );
+            },
+            headerRight: () => (
+              <View style={BottomTapHeaderStyles.headerRight}>
+                <Text style={BottomTapHeaderStyles.pageText}>Notification</Text>
                 <View style={BottomTapHeaderStyles.sideBar} />
               </View>
             ),

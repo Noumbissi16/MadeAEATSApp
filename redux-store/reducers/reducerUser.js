@@ -1,6 +1,6 @@
 const initialState = {
   user: {},
-  isConnected: false,
+  isConnected: true,
   message: "",
 };
 
