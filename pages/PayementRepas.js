@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import PayerRepasStyles from "../assets/Styles/PayerRepasStyles";
 import { Dropdown } from "react-native-element-dropdown";
 
-const PayementRepas = () => {
+const PayementRepas = ({ navigation, route }) => {
   const pathOM = require("../assets/images/Orange_Money_logo_PNG-1.png");
   const pathMOMO = require("../assets/images/SeekPng.com_money-png-images_691715.png");
   const logoOrange = require("../assets/images/Orange_logo.png");
@@ -31,6 +31,10 @@ const PayementRepas = () => {
       console.log("Invalid phone number");
       // Perform actions for an invalid phone number
     }
+  };
+
+  const handlePayment = () => {
+    navigation.navigate("Commande");
   };
 
   const renderDataItem = (item) => {
@@ -93,7 +97,7 @@ const PayementRepas = () => {
           )}
         </View>
       </View>
-      <TouchableOpacity style={PayerRepasStyles.btn}>
+      <TouchableOpacity style={PayerRepasStyles.btn} onPress={handlePayment}>
         <Text style={PayerRepasStyles.btnText}>Valider</Text>
       </TouchableOpacity>
     </View>

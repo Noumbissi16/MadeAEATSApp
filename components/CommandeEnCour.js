@@ -37,7 +37,7 @@ const CommandeEnCour = () => {
         </View>
       </View>
       <TouchableOpacity disabled style={CommandStyles.btn}>
-        <Text style={CommandStyles.btnText}>En cours de livraison</Text>
+        <Text style={CommandStyles.btnText}>Confirmez livraison</Text>
       </TouchableOpacity>
     </View>
   );

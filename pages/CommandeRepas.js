@@ -6,11 +6,18 @@ import { MaterialIcons } from "@expo/vector-icons";
 import Colors from "../assets/Colors/Colors";
 import { scale } from "react-native-size-matters";
 
-const CommandeRepas = ({ navigation }) => {
+const CommandeRepas = ({ navigation, route }) => {
+  const restaurantToSelectMenu = route.params.restaurant;
+
+  const menu = route.params.menu;
+
   const [nombreRepas, setNombreRepas] = useState(1);
-  const [prixRepas, setPrixRepas] = useState(1000);
+  const [prixRepas, setPrixRepas] = useState(menu.prix);
   const handleBtnPress = () => {
-    navigation.navigate("Payer votre repas");
+    navigation.navigate("Payer votre repas", {
+      restaurant: restaurantToSelectMenu,
+      menu,
+    });
   };
 
   const decreaseRepas = () => {
@@ -21,21 +28,18 @@ const CommandeRepas = ({ navigation }) => {
     }
   };
   useEffect(() => {
-    setPrixRepas(1000 * nombreRepas);
+    setPrixRepas(menu.prix * nombreRepas);
   }, [nombreRepas]);
   const increaseRepas = () => {
     setNombreRepas(nombreRepas + 1);
   };
   return (
     <View style={CommandeRepasStyles.container}>
-      <Image
-        style={CommandeRepasStyles.imagePlat}
-        source={require("../assets/images/resto1.jpeg")}
-      />
-      <Text style={CommandeRepasStyles.nomPlat}>Poisson braisser</Text>
+      <Image style={CommandeRepasStyles.imagePlat} source={menu.img} />
+      <Text style={CommandeRepasStyles.nomPlat}>{menu.nom}</Text>
       <View style={CommandeRepasStyles.rowFlex}>
         <Text style={CommandeRepasStyles.nomResto}>
-          Restaurant le Restoration
+          {restaurantToSelectMenu.nomResto}
         </Text>
         <View style={CommandeRepasStyles.rowFlex}>
           <MaterialIcons
@@ -43,7 +47,9 @@ const CommandeRepas = ({ navigation }) => {
             size={scale(18)}
             color={Colors.secondary800}
           />
-          <Text style={CommandeRepasStyles.locResto}>Bafoussam</Text>
+          <Text style={CommandeRepasStyles.locResto}>
+            {restaurantToSelectMenu.town}
+          </Text>
         </View>
       </View>
       <View style={CommandeRepasStyles.rowFlex}>
@@ -66,17 +72,16 @@ const CommandeRepas = ({ navigation }) => {
         </View>
         <Text style={CommandeRepasStyles.prixPlat}> {prixRepas} Fcfa </Text>
       </View>
-      <Text style={CommandeRepasStyles.descPlat}>
-        Monoker primagraf tosm. Enfoni hungerpandemi. Åns ul. Autora defili
-        faskade. Nygären euvis antide. Trarade antede epiplaning.
-      </Text>
+      <Text style={CommandeRepasStyles.descPlat}>{menu.desc}</Text>
       <View style={CommandeRepasStyles.rowFlex}>
         <Text style={CommandeRepasStyles.nomResto}>Prix de livraison </Text>
         <Text style={CommandeRepasStyles.prixPlat}> 1000 Fcfa </Text>
       </View>
       <View style={CommandeRepasStyles.rowFlex}>
         <Text style={CommandeRepasStyles.nomResto}>Total </Text>
-        <Text style={CommandeRepasStyles.prixPlat}> 3000 Fcfa </Text>
+        <Text style={CommandeRepasStyles.prixPlat}>
+          {prixRepas + 1000} Fcfa
+        </Text>
       </View>
       <TouchableOpacity
         style={CommandeRepasStyles.btn}

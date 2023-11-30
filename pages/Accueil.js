@@ -1,37 +1,31 @@
 import { FlatList, View } from "react-native";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 //
 import AccueilStyles from "../assets/Styles/AccueilStyles";
 import CardRestaurant from "../components/CardRestaurant";
 import { Searchbar } from "react-native-paper";
-import * as Location from "expo-location";
-import restaurantData from "../assets/data/restaurantData";
+import { useSelector } from "react-redux";
 //
 const Accueil = ({ navigation }) => {
-  const [location, setLocation] = useState(null);
-  const [errorMsg, setErrorMsg] = useState(null);
-
-  useEffect(() => {
-    (async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== "granted") {
-        setErrorMsg("Permission to access location was denied");
-        return;
-      }
-
-      let location = await Location.getCurrentPositionAsync({});
-      // console.log(location);
-      setLocation(location);
-    })();
-  }, []);
-  // console.log(location);
-  const handleSearch = (text) => {
-    setSearchText(text);
-  };
-  const handleBtnPress = () => {
-    navigation.navigate("CommanderRepas");
-  };
   const [searchText, setSearchText] = useState("");
+  const restaurantData = useSelector((state) => state.restaurant.restaurants);
+
+  const [restaurantDataToDisplay, setrestaurantDataToDisplay] =
+    useState(restaurantData);
+
+  //
+
+  const handleSearch = () => {
+    if (!searchText) return setrestaurantDataToDisplay(restaurantData);
+
+    const result = restaurantDataToDisplay.filter((restaurant) => {
+      const restaurantMatches = restaurant.nomResto.includes(searchText);
+      return restaurantMatches;
+    });
+
+    setrestaurantDataToDisplay(result);
+  };
+
   return (
     <View style={AccueilStyles.container}>
       <View>
@@ -39,15 +33,19 @@ const Accueil = ({ navigation }) => {
           style={AccueilStyles.searchInput}
           placeholder="Rechercher un repas"
           value={searchText}
-          onChangeText={handleSearch}
+          onChangeText={(e) => setSearchText(e)}
+          onSubmitEditing={handleSearch}
+          onClearIconPress={() => {
+            setrestaurantDataToDisplay(restaurantData);
+          }}
         />
       </View>
 
       <FlatList
         showsVerticalScrollIndicator={false}
-        data={restaurantData}
+        data={restaurantDataToDisplay}
         renderItem={({ item }) => {
-          return <CardRestaurant item={item} handleBtnPress={handleBtnPress} />;
+          return <CardRestaurant item={item} navigation={navigation} />;
         }}
         keyExtractor={(item) => item.id.toString()}
       />

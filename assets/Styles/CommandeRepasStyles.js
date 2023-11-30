@@ -59,7 +59,7 @@ export default ScaledSheet.create({
     borderRadius: "15@s",
     backgroundColor: Colors.primary700,
     paddingVertical: "12@s",
-    marginTop: "5@s",
+    marginTop: "20@s",
   },
   btnText: {
     color: Colors.white,
