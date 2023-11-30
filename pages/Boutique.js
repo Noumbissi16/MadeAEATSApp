@@ -1,30 +1,33 @@
-import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import React from "react";
-import { MaterialIcons } from "@expo/vector-icons";
 import BoutiqueStyles from "../assets/Styles/BoutiqueStyles";
 import CardBoutique from "../components/CardBoutique";
+import { useSelector } from "react-redux";
+import { FlatList } from "react-native";
 
 const Boutique = ({ navigation }) => {
-  const handleBtnPress = () => {
-    navigation.navigate("Menu Restaurant");
+  const restaurants = useSelector((state) => state.restaurant.restaurants);
+
+  // console.log(restaurants);
+
+  const handleBtnPress = (restaurant) => {
+    navigation.navigate("Menu Restaurant", {
+      restaurant,
+    });
   };
   return (
     <View style={BoutiqueStyles.container}>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <CardBoutique handleBtnPress={handleBtnPress} />
-        <CardBoutique handleBtnPress={handleBtnPress} />
-        <CardBoutique handleBtnPress={handleBtnPress} />
-        <CardBoutique handleBtnPress={handleBtnPress} />
-        <CardBoutique handleBtnPress={handleBtnPress} />
-        <CardBoutique handleBtnPress={handleBtnPress} />
-      </ScrollView>
+      <FlatList
+        showsVerticalScrollIndicator={false}
+        data={restaurants}
+        renderItem={({ item }) => (
+          <CardBoutique
+            handleBtnPress={() => handleBtnPress(item)}
+            restaurant={item}
+          />
+        )}
+        keyExtractor={(item) => item.id.toString()}
+      />
     </View>
   );
 };

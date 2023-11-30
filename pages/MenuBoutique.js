@@ -6,39 +6,37 @@ import MenuRestoComponent from "../components/MenuRestoComponent";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { scale } from "react-native-size-matters";
 
-const MenuBoutique = ({ navigation }) => {
-  const [shopOpen, setShopOpen] = useState(true);
-  const toggleShopOpen = () => {
-    setShopOpen(!shopOpen);
-  };
-  const handleCommander = () => {
+const MenuBoutique = ({ navigation, route }) => {
+  const restaurant = route.params.restaurant;
+
+  const [shopOpen, setShopOpen] = useState(restaurant.ouvert);
+
+  const handleCommander = (menu) => {
     if (!shopOpen) {
       alert("Cette boutique est fermez a cette heure");
     } else {
-      navigation.navigate("CommanderRepas");
+      navigation.navigate("CommanderRepas", {
+        menu,
+        restaurant,
+      });
     }
   };
   return (
     <View style={MenuResto.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <TouchableOpacity onPress={toggleShopOpen}>
-          <Image
-            style={MenuResto.imgResto}
-            resizeMode="cover"
-            source={require("../assets/images/resto2.jpeg")}
-          />
-        </TouchableOpacity>
-        <Text style={shopOpen ? MenuResto.ouvert : MenuResto.fermez}>
-          {shopOpen ? "Ouvert" : "Fermez"}
-        </Text>
+        <View style={{ position: "relative" }}>
+          <TouchableOpacity>
+            <Image style={MenuResto.imgResto} source={restaurant.imgResto} />
+          </TouchableOpacity>
+          <Text style={shopOpen ? MenuResto.ouvert : MenuResto.fermez}>
+            {shopOpen ? "Ouvert" : "Fermez"}
+          </Text>
+        </View>
         <View style={MenuResto.pagePadding}>
           <View style={{ flexDirection: "row" }}>
-            <Image
-              style={MenuResto.imgProfile}
-              source={require("../assets/images/logoresto.jpg")}
-            />
+            <Image style={MenuResto.imgProfile} source={restaurant.imgAdmin} />
             <View>
-              <Text style={MenuResto.nomResto}>Mr N Fast Food</Text>
+              <Text style={MenuResto.nomResto}>{restaurant.nomResto}</Text>
               <View style={MenuResto.localisationHourFlex}>
                 <View style={MenuResto.locationResto}>
                   <MaterialIcons
@@ -46,7 +44,7 @@ const MenuBoutique = ({ navigation }) => {
                     size={scale(20)}
                     color="black"
                   />
-                  <Text style={MenuResto.descLocation}>Bafoussam </Text>
+                  <Text style={MenuResto.descLocation}>{restaurant.town} </Text>
                 </View>
                 <View style={MenuResto.locationResto}>
                   <MaterialCommunityIcons
@@ -54,18 +52,24 @@ const MenuBoutique = ({ navigation }) => {
                     size={scale(20)}
                     color="black"
                   />
-                  <Text style={MenuResto.descLocation}>07h-17h </Text>
+                  <Text style={MenuResto.descLocation}>
+                    {restaurant.horraire}
+                  </Text>
                 </View>
               </View>
             </View>
           </View>
           <View style={MenuResto.line} />
           <Text style={MenuResto.menu}>Menu</Text>
+
           <View style={MenuResto.menuFlex}>
-            <MenuRestoComponent handleCommander={handleCommander} />
-            <MenuRestoComponent handleCommander={handleCommander} />
-            <MenuRestoComponent handleCommander={handleCommander} />
-            <MenuRestoComponent handleCommander={handleCommander} />
+            {restaurant.menu.map((menu) => (
+              <MenuRestoComponent
+                handleCommander={() => handleCommander(menu)}
+                menu={menu}
+                key={menu.id}
+              />
+            ))}
           </View>
         </View>
       </ScrollView>

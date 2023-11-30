@@ -8,7 +8,7 @@ export default restaurantData = [
     imgAdmin: require("../../assets/images/logoresto.jpg"),
     town: "Bafoussam",
     localisation: "Derriere marche A",
-    imgResto: require("../../assets/images/logoresto.jpg"),
+    imgResto: require("../../assets/images/resto2.jpeg"),
     horraire: "08-17h",
     menu: [
       {
@@ -29,7 +29,7 @@ export default restaurantData = [
   },
   {
     id: 2,
-    ouvert: true,
+    ouvert: false,
     nomResto: "Net Net Resto",
     imgAdmin: require("../../assets/images/logoresto.jpg"),
     town: "Douala",
@@ -38,7 +38,7 @@ export default restaurantData = [
     horraire: "08-16h",
     menu: [
       {
-        nom: "ara braiser",
+        nom: "ara braiser avec patate rouge",
         prix: 1200,
         id: 1,
         img: require("../../assets/images/taro.jpg"),

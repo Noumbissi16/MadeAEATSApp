@@ -4,26 +4,21 @@ import { MaterialIcons } from "@expo/vector-icons";
 import BoutiqueStyles from "../assets/Styles/BoutiqueStyles";
 import { scale } from "react-native-size-matters";
 
-const CardBoutique = ({ handleBtnPress }) => {
+const CardBoutique = ({ handleBtnPress, restaurant }) => {
+  // console.log(restaurant);
   return (
     <View style={BoutiqueStyles.card}>
-      <Image
-        style={BoutiqueStyles.imgBoutique}
-        source={require("../assets/images/resto1.jpeg")}
-      />
-      <Text style={BoutiqueStyles.nomResto}>Mr N Fast Food</Text>
+      <Image style={BoutiqueStyles.imgBoutique} source={restaurant.imgResto} />
+      <Text style={BoutiqueStyles.nomResto}>{restaurant.nomResto}</Text>
       <View style={BoutiqueStyles.rowFlex}>
-        <Image
-          style={BoutiqueStyles.imgProfile}
-          source={require("../assets/images/logoresto.jpg")}
-        />
+        <Image style={BoutiqueStyles.imgProfile} source={restaurant.imgAdmin} />
         <MaterialIcons
           style={BoutiqueStyles.icon}
           name="location-pin"
           size={scale(24)}
         />
         <Text style={BoutiqueStyles.precLocation}>
-          Henifiera presödissa de protiv. Tikass.Henifiera presödissa de protiv.
+          {restaurant.localisation}
         </Text>
       </View>
       <TouchableOpacity style={BoutiqueStyles.btn} onPress={handleBtnPress}>

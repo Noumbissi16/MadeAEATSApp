@@ -22,6 +22,7 @@ export default ScaledSheet.create({
     borderTopRightRadius: "25@s",
     borderTopLeftRadius: "25@s",
     width: width * 0.9,
+    height: height * 0.21,
   },
   nomResto: {
     fontFamily: "Montserrat_600SemiBold",
@@ -63,6 +64,6 @@ export default ScaledSheet.create({
     height: "45@s",
   },
   icon: {
-    alignSelf: "flex-start",
+    // alignSelf: "flex-start",
   },
 });

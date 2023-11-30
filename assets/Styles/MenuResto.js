@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from "react-native";
+import { Dimensions } from "react-native";
 import Colors from "../Colors/Colors";
 import { ScaledSheet } from "react-native-size-matters";
 
@@ -16,13 +16,14 @@ export default ScaledSheet.create({
   card: {
     width: width * 0.425,
     backgroundColor: Colors.white,
-    borderRadius: "15@s",
+    borderRadius: "8@s",
     marginBottom: "11@s",
-    elevation: 2,
+    overflow: "hidden",
   },
   imgResto: {
     width: width * 1,
-    maxHeight: height * 0.25,
+    height: height * 0.275,
+    resizeMode: "cover",
   },
   locationResto: {
     flexDirection: "row",
@@ -33,35 +34,33 @@ export default ScaledSheet.create({
     width: width * 0.9,
     borderWidth: 0.35,
     borderColor: Colors.grey,
-    marginVertical: "12@s",
+    marginTop: "12@s",
+    marginBottom: "8@s",
   },
   imgMenu: {
-    width: width * 0.4,
+    width: width * 0.425,
     height: width * 0.205,
-    borderRadius: "15@s",
-    alignSelf: "center",
-    marginTop: "8@s",
   },
   btn: {
     backgroundColor: Colors.primary500,
-    padding: "12@s",
-    borderBottomLeftRadius: "15@s",
-    borderBottomRightRadius: "15@s",
+    padding: "10@s",
+    // borderBottomLeftRadius: "8@s",
+    // borderBottomRightRadius: "8@s",
   },
   bntText: {
     alignSelf: "center",
     color: Colors.white,
     fontFamily: "Montserrat_500Medium",
-    fontSize: "15@s",
+    fontSize: "12@s",
   },
   menuText: {
-    fontSize: "18@s",
+    fontSize: "13.5@s",
     alignSelf: "center",
     fontFamily: "Montserrat_500Medium",
     marginTop: "5@s",
   },
   menuPrix: {
-    fontSize: "15@s",
+    fontSize: "12@s",
     alignSelf: "center",
     fontFamily: "Montserrat_500Medium",
     color: Colors.secondary700,
@@ -85,11 +84,10 @@ export default ScaledSheet.create({
   menu: {
     fontFamily: "Montserrat_600SemiBold",
     fontSize: "20@s",
+    marginBottom: "8@s",
   },
   ouvert: {
     position: "absolute",
-    right: "25@s",
-    top: "115@s",
     paddingVertical: "5@s",
     paddingHorizontal: "13@s",
     borderRadius: "15@s",
@@ -97,11 +95,11 @@ export default ScaledSheet.create({
     color: Colors.white,
     fontSize: "15@s",
     backgroundColor: Colors.primary400,
+    right: "10@s",
+    bottom: "5@s",
   },
   fermez: {
     position: "absolute",
-    right: "25@s",
-    top: "115@s",
     paddingVertical: "5@s",
     paddingHorizontal: "13@s",
     borderRadius: "15@s",
@@ -109,6 +107,8 @@ export default ScaledSheet.create({
     fontSize: "15@s",
     backgroundColor: Colors.secondary400,
     color: Colors.white,
+    right: "10@s",
+    bottom: "5@s",
   },
   localisationHourFlex: {
     flexDirection: "row",
