@@ -4,12 +4,14 @@ import AccueilStyles from "../assets/Styles/AccueilStyles";
 import { MaterialIcons } from "@expo/vector-icons";
 
 const CardRestaurant = ({ item, navigation }) => {
-  const handlePress = (menu, restaurant) => {
+  const handlePress = (menu, idRestaurant) => {
     navigation.navigate("CommanderRepas", {
       menu,
-      restaurant,
+      idRestaurant,
     });
   };
+
+  // console.log(item);
 
   const restaurant = item.menu.map((menu) => (
     <View style={AccueilStyles.card} key={menu.id}>
@@ -28,7 +30,7 @@ const CardRestaurant = ({ item, navigation }) => {
       <Text style={AccueilStyles.descResto}>{menu.desc}</Text>
       <TouchableOpacity
         style={AccueilStyles.btn}
-        onPress={() => handlePress(menu, item)}
+        onPress={() => handlePress(menu, item.id)}
         // onPress={handleBtnPress}
       >
         <Image source={require("../assets/images/livreur.png")} />

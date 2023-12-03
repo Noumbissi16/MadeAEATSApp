@@ -4,11 +4,11 @@ export default restaurantData = [
   {
     id: 1,
     ouvert: true,
-    nomResto: "Restaurant la Restoration",
-    imgAdmin: require("../../assets/images/logoresto.jpg"),
+    nomResto: "Chez Karim",
+    imgAdmin: require("../../assets/images/profile1.jpg"),
     town: "Bafoussam",
     localisation: "Derriere marche A",
-    imgResto: require("../../assets/images/resto2.jpeg"),
+    imgResto: require("../../assets/images/resto4.jpg"),
     horraire: "08-17h",
     menu: [
       {
@@ -31,10 +31,10 @@ export default restaurantData = [
     id: 2,
     ouvert: false,
     nomResto: "Net Net Resto",
-    imgAdmin: require("../../assets/images/logoresto.jpg"),
+    imgAdmin: require("../../assets/images/profile2.jpg"),
     town: "Douala",
     localisation: "Rond point total",
-    imgResto: require("../../assets/images/logoresto.jpg"),
+    imgResto: require("../../assets/images/resto5.jpg"),
     horraire: "08-16h",
     menu: [
       {
@@ -64,10 +64,10 @@ export default restaurantData = [
     id: 3,
     ouvert: false,
     nomResto: "Restaurant le Restoration",
-    imgAdmin: require("../../assets/images/logoresto.jpg"),
+    imgAdmin: require("../../assets/images/profile3.jpg"),
     town: "Bafoussam",
     localisation: "Feu rouge",
-    imgResto: require("../../assets/images/resto1.jpeg"),
+    imgResto: require("../../assets/images/resto6.jpg"),
     horraire: "09-15h",
     menu: [
       {

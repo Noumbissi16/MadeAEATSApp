@@ -1,22 +1,34 @@
-import { View, Text, Image, TouchableOpacity, Button } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import React, { useEffect, useState } from "react";
-import { StatusBar } from "expo-status-bar";
 import CommandeRepasStyles from "../assets/Styles/CommandeRepasStyles";
 import { MaterialIcons } from "@expo/vector-icons";
 import Colors from "../assets/Colors/Colors";
 import { scale } from "react-native-size-matters";
+import { useSelector } from "react-redux";
 
 const CommandeRepas = ({ navigation, route }) => {
-  const restaurantToSelectMenu = route.params.restaurant;
-
+  const idrestaurantToSelectMenu = route.params.idRestaurant;
+  const restaurantToSelectMenu = useSelector((state) =>
+    state.restaurant.restaurants.find(
+      (restaurant) => restaurant.id === idrestaurantToSelectMenu
+    )
+  );
   const menu = route.params.menu;
 
   const [nombreRepas, setNombreRepas] = useState(1);
   const [prixRepas, setPrixRepas] = useState(menu.prix);
+  const prixTotal = prixRepas + 1000;
   const handleBtnPress = () => {
+    const commanderRepasInfo = {
+      ...menu,
+      idResto: restaurantToSelectMenu.id,
+      nomResto: restaurantToSelectMenu.nomResto,
+      nombreRepas,
+      prixTotal,
+    };
+
     navigation.navigate("Payer votre repas", {
-      restaurant: restaurantToSelectMenu,
-      menu,
+      commanderRepasInfo,
     });
   };
 
@@ -33,6 +45,7 @@ const CommandeRepas = ({ navigation, route }) => {
   const increaseRepas = () => {
     setNombreRepas(nombreRepas + 1);
   };
+
   return (
     <View style={CommandeRepasStyles.container}>
       <Image style={CommandeRepasStyles.imagePlat} source={menu.img} />
@@ -79,9 +92,7 @@ const CommandeRepas = ({ navigation, route }) => {
       </View>
       <View style={CommandeRepasStyles.rowFlex}>
         <Text style={CommandeRepasStyles.nomResto}>Total </Text>
-        <Text style={CommandeRepasStyles.prixPlat}>
-          {prixRepas + 1000} Fcfa
-        </Text>
+        <Text style={CommandeRepasStyles.prixPlat}>{prixTotal} Fcfa</Text>
       </View>
       <TouchableOpacity
         style={CommandeRepasStyles.btn}

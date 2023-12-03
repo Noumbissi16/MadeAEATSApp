@@ -2,11 +2,15 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import CommandStyles from "../assets/Styles/CommandStyles";
 
-const CommandeRecente = ({ handleBtnReccomander, handleBtnDetail }) => {
+const CommandeRecente = ({
+  handleBtnReccomander,
+  handleBtnDetail,
+  commande,
+}) => {
   return (
     <View style={CommandStyles.card}>
       <View style={CommandStyles.flexSpaceCommande}>
-        <Text style={CommandStyles.dateCommande}>20 Jun, 10:30</Text>
+        <Text style={CommandStyles.dateCommande}>{commande.dateLivraison}</Text>
         <Text style={CommandStyles.statusLivrer}>Commande livrer</Text>
       </View>
       <View style={CommandStyles.rowFlex}>
@@ -14,18 +18,20 @@ const CommandeRecente = ({ handleBtnReccomander, handleBtnDetail }) => {
           <Image
             resizeMode="stretch"
             style={CommandStyles.imgPlat}
-            source={require("../assets/images/poissonbraiser.jpg")}
+            source={commande.img}
           />
         </View>
         <View>
           <View>
-            <Text style={CommandStyles.nomPlat}>Poisson braiser</Text>
+            <Text style={CommandStyles.nomPlat}>{commande.nom}</Text>
             <Text style={CommandStyles.locPlat}>
               De chez
-              <Text style={CommandStyles.nomResto}> Net Net braise</Text>
+              <Text style={CommandStyles.nomResto}> {commande.nomResto}</Text>
             </Text>
           </View>
-          <Text style={CommandStyles.prixCommand}>1800F cfa </Text>
+          <Text style={CommandStyles.prixCommand}>
+            {commande.prixTotal}F cfa{" "}
+          </Text>
         </View>
       </View>
       <View style={CommandStyles.bntFlex}>

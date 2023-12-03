@@ -6,14 +6,16 @@ const { height } = Dimensions.get("screen");
 export default ScaledSheet.create({
   conatiner: {
     marginHorizontal: width * 0.035,
-    marginVertical: height * 0.02,
+    // marginVertical: height * 0.02,
+    marginBottom: height * 0.02,
   },
   image: {
-    width: width * 0.655,
-    height: width * 0.655,
-    borderRadius: "15@s",
+    // resizeMode: "contain",
+    // width: width * 0.855,
+    width: width * 1,
+    height: width * 0.5,
+    borderRadius: "10@s",
     alignSelf: "center",
-    resizeMode: "contain",
     marginBottom: "20@s",
   },
   viewFlex: {
@@ -37,11 +39,12 @@ export default ScaledSheet.create({
     borderRadius: "12@s",
   },
   rowFlex: {
-    // flexDirection: "row",
-    // justifyContent: "space-between",
+    flexDirection: "row",
+    justifyContent: "space-between",
     marginBottom: "20@s",
-    borderBottomWidth: "1@s",
-    borderBottomColor: Colors.grey,
+    alignItems: "center",
+    // borderBottomWidth: "1@s",
+    // borderBottomColor: Colors.grey,
   },
   propertyName: {
     fontFamily: "Montserrat_400Regular",

@@ -22,7 +22,7 @@ export default ScaledSheet.create({
   statusCommande: {
     fontFamily: "Montserrat_600SemiBold",
     fontSize: "20@s",
-    marginBottom: "15@s",
+    marginBottom: "10@s",
   },
   idCommande: {
     alignSelf: "flex-end",
@@ -48,21 +48,27 @@ export default ScaledSheet.create({
     justifyContent: "center",
     marginLeft: "18@s",
     borderRadius: "12@s",
-    marginRight: width * 0.075,
+    // marginRight: width * 0.075,
   },
   nomPlat: {
     fontFamily: "Montserrat_600SemiBold",
     fontSize: "18@s",
-    textAlign: "center",
+    // textAlign: "center",
+    // alignSelf: "flex-start",
   },
   nomResto: {
     fontFamily: "Montserrat_500Medium",
     color: Colors.secondary600,
+    width: "5@s",
   },
   rowFlex: {
     flexDirection: "row",
-    alignItems: "flex-start",
-    flexWrap: "wrap",
+    // alignItems: "flex-start",
+    // flexWrap: "wrap",
+    justifyContent: "center",
+    alignItems: "center",
+    width: width * 0.85,
+    alignSelf: "center",
   },
   locPlat: {
     fontFamily: "Montserrat_300Light",
@@ -146,5 +152,17 @@ export default ScaledSheet.create({
   },
   btnReccomanderTxt: {
     color: Colors.white,
+  },
+  emptyTxt: {
+    fontFamily: "Montserrat_400Regular",
+    fontSize: "12@s",
+    // color: Colors.secondary600,
+    backgroundColor: Colors.white,
+    padding: "20@s",
+    borderRadius: "5@s",
+
+    // borderColor: Colors.secondary100,
+    // borderWidth: 1,
+    textAlign: "center",
   },
 });

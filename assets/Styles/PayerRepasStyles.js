@@ -12,7 +12,7 @@ export default ScaledSheet.create({
   inputText: {
     fontFamily: "Montserrat_600SemiBold",
     fontSize: "15@s",
-    marginBottom: "10@s",
+    // marginBottom: "10@s",
   },
   logo: {
     width: "60@s",
@@ -59,7 +59,6 @@ export default ScaledSheet.create({
     shadowRadius: 1.41,
 
     elevation: 2,
-    marginBottom: "15@s",
   },
   imageInputText: {
     position: "absolute",
@@ -81,5 +80,16 @@ export default ScaledSheet.create({
     fontSize: "15@s",
     color: Colors.white,
     textTransform: "capitalize",
+  },
+  inputColumn: {
+    marginBottom: "12@s",
+  },
+  errorMsg: {
+    fontFamily: "Montserrat_300Light",
+    fontSize: "10@s",
+    color: Colors.secondary600,
+    marginTop: "2@s",
+
+    // alignSelf: "center",
   },
 });
