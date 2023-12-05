@@ -1,36 +1,28 @@
-import {
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-  Modal,
-  TextInput,
-} from "react-native";
-import React, { useState } from "react";
+import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
+import React, { useRef, useState } from "react";
 import ModifierProfileStyles from "../assets/Styles/ModifierProfileStyles";
-import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 import Colors from "../assets/Colors/Colors";
 import * as ImagePicker from "expo-image-picker";
-import ModalStyles from "../assets/Styles/ModalStyles";
-import ModalComponent from "../components/ModalComponent";
 import { scale } from "react-native-size-matters";
+import ModifierProfileCardComponent from "../components/ModifierProfileCardComponent";
+import {
+  BottomSheetModal,
+  BottomSheetModalProvider,
+} from "@gorhom/bottom-sheet";
+import ModifierProfileBottomSheet from "../components/ModifierProfileBottomSheet";
+import { useDispatch, useSelector } from "react-redux";
+import { modifyUser } from "../redux-store/actions/User/modifierUser";
 
 const ModifierProfile = () => {
-  const defaultProfile = require("../assets/images/logoresto.jpg");
-  //
-  const [imageURI, setImageURI] = useState(null);
-  const [modalIsVisoble, setModalIsVisoble] = useState(false);
-  //
-  const showModal = () => setModalIsVisoble(!modalIsVisoble);
-  const hideModal = () => setModalIsVisoble(false);
-  const modifyEmail = () => {
-    setModalIsVisoble(!modalIsVisoble);
-    // return (
-    //   <ModalComponent stateModal={modalIsVisoble} handleModal={showModal} />
-    // );
-  };
-  const modifyNumero = () => {};
-  const modifyVille = () => {};
+  // Obtain user from store
+  const user = useSelector((state) => state.user.user);
+
+  // console.log(user.profile);
+
+  //profile picture functionnality
+  const defaultProfile = require("../assets/images/DefaultProfil.jpg");
+  const [imageURI, setImageURI] = useState(user.profile);
   const pickInageFromGallery = async () => {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
     if (status !== "granted") {
@@ -42,93 +34,105 @@ const ModifierProfile = () => {
 
     if (!result.canceled) {
       setImageURI(result.assets[0].uri);
+      // console.log(result.assets[0].uri);
+      dispatch(
+        modifyUser({ property: "profile", value: result.assets[0].uri })
+      );
     }
   };
+  //
+
+  // Modal props
+  const bottomSheetRef = useRef(null);
+  const snapPoints = ["35%"];
+
+  // Modify functionnalities
+  const [onModifying, setonModifying] = useState("");
+  function handleOpenBottomSheet(type) {
+    bottomSheetRef.current?.present();
+    setonModifying(type);
+  }
+
+  const dispatch = useDispatch();
+
+  const handleModifyProperty = (value) => {
+    bottomSheetRef.current.close();
+    // console.log(value);
+    dispatch(modifyUser(value));
+  };
+
   return (
-    <View style={ModifierProfileStyles.container}>
-      <ModalComponent stateModal={modalIsVisoble} handleModal={showModal} />
-      <View>
-        <View style={ModifierProfileStyles.card}>
-          <View style={ModifierProfileStyles.img_IconFlex}>
-            <TouchableOpacity onPress={pickInageFromGallery}>
-              {imageURI == null ? (
-                <Image
-                  source={defaultProfile}
-                  style={ModifierProfileStyles.imgProfile}
-                />
-              ) : (
-                <Image
-                  style={ModifierProfileStyles.imgProfile}
-                  source={{ uri: imageURI }}
-                />
-              )}
-              <View style={ModifierProfileStyles.icon}>
-                <MaterialIcons
-                  name="add-circle"
-                  size={scale(25)}
-                  color={Colors.white}
-                />
+    <BottomSheetModalProvider>
+      <View style={ModifierProfileStyles.container}>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View>
+            <View style={ModifierProfileStyles.card}>
+              <View style={ModifierProfileStyles.img_IconFlex}>
+                <TouchableOpacity onPress={pickInageFromGallery}>
+                  {imageURI == null ? (
+                    <Image
+                      source={defaultProfile}
+                      style={ModifierProfileStyles.imgProfile}
+                    />
+                  ) : (
+                    <Image
+                      style={ModifierProfileStyles.imgProfile}
+                      source={{ uri: imageURI }}
+                    />
+                  )}
+                  <View style={ModifierProfileStyles.icon}>
+                    <MaterialIcons
+                      name="image"
+                      size={scale(25)}
+                      color={Colors.white}
+                    />
+                  </View>
+                </TouchableOpacity>
               </View>
-            </TouchableOpacity>
-          </View>
-          <Text style={ModifierProfileStyles.nomUser}>
-            Noumbissi Stael, 22 ans
-          </Text>
-        </View>
-        <View style={ModifierProfileStyles.modifyCompteCard}>
-          <View style={ModifierProfileStyles.compteCardFlex}>
-            <MaterialCommunityIcons
-              name="email-edit"
-              size={scale(28)}
-              color="black"
-            />
-            <View style={{ marginLeft: 12 }}>
-              <Text style={ModifierProfileStyles.email}>Email</Text>
-              <Text style={ModifierProfileStyles.userMail}>
-                noumbissistael@gmail.com
-              </Text>
+              <Text style={ModifierProfileStyles.nomUser}>{user.nom}</Text>
             </View>
-          </View>
-          <TouchableOpacity onPress={modifyEmail}>
-            <Text style={ModifierProfileStyles.modify}>Modifier</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={ModifierProfileStyles.modifyCompteCard}>
-          <View style={ModifierProfileStyles.compteCardFlex}>
-            <MaterialIcons
-              name="phone-in-talk"
-              size={scale(28)}
-              color="black"
+
+            <ModifierProfileCardComponent
+              iconName={"email-edit"}
+              title={"Email"}
+              value={user.email}
+              handlePress={() => handleOpenBottomSheet("email")}
+              key={"Email"}
             />
-            <View style={{ marginLeft: 12 }}>
-              <Text style={ModifierProfileStyles.email}>
-                Numero de telephone
-              </Text>
-              <Text style={ModifierProfileStyles.userMail}>690277499</Text>
-            </View>
-          </View>
-          <TouchableOpacity onPress={showModal}>
-            <Text style={ModifierProfileStyles.modify}>Modifier</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={ModifierProfileStyles.modifyCompteCard}>
-          <View style={ModifierProfileStyles.compteCardFlex}>
-            <MaterialCommunityIcons
-              name="home-city"
-              size={scale(28)}
-              color="black"
+            <ModifierProfileCardComponent
+              iconName={"lock-open"}
+              title={"Mot de passe"}
+              value={user.motDePasse}
+              handlePress={() => handleOpenBottomSheet("mot De Passe")}
+              key={"Mot de passe"}
             />
-            <View style={{ marginLeft: 12 }}>
-              <Text style={ModifierProfileStyles.email}>Ville</Text>
-              <Text style={ModifierProfileStyles.userMail}>Bafoussam</Text>
-            </View>
+            <ModifierProfileCardComponent
+              iconName={"phone-in-talk"}
+              title={"Numero de telephone"}
+              handlePress={() => handleOpenBottomSheet("numero Telephone")}
+              value={user.numeroTelephone}
+            />
+            <ModifierProfileCardComponent
+              iconName={"home-city"}
+              title={"Ville"}
+              handlePress={() => handleOpenBottomSheet("ville")}
+              value={user.ville}
+            />
+            <BottomSheetModal
+              ref={bottomSheetRef}
+              index={0}
+              snapPoints={snapPoints}
+              backgroundStyle={{ backgroundColor: Colors.background }}
+            >
+              <ModifierProfileBottomSheet
+                title={onModifying}
+                handleModifyProperty={handleModifyProperty}
+              />
+            </BottomSheetModal>
           </View>
-          <TouchableOpacity onPress={showModal}>
-            <Text style={ModifierProfileStyles.modify}>Modifier</Text>
-          </TouchableOpacity>
-        </View>
+        </ScrollView>
       </View>
-    </View>
+    </BottomSheetModalProvider>
   );
 };
 

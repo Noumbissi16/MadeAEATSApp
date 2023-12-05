@@ -35,5 +35,6 @@ export default ScaledSheet.create({
     borderWidth: 0.35,
     borderColor: Colors.grey,
     marginVertical: "12@s",
+    height: 0.1,
   },
 });

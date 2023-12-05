@@ -15,10 +15,10 @@ export default ScaledSheet.create({
   card: {
     width: width * 0.75,
     backgroundColor: Colors.primary600,
-    borderRadius: "25@s",
+    borderRadius: "20@s",
     marginBottom: "15@s",
     alignItems: "center",
-    padding: "15@s",
+    padding: "8@s",
     alignSelf: "center",
   },
 
@@ -27,23 +27,25 @@ export default ScaledSheet.create({
     alignItems: "baseline",
   },
   imgProfile: {
-    width: "60@s",
-    height: "60@s",
-    borderRadius: "50@s",
+    width: "100@s",
+    height: "100@s",
+    borderRadius: "500@s",
     // resizeMode: "contain",
   },
   nomUser: {
     fontFamily: "Montserrat_600SemiBold",
     fontSize: "15@s",
     color: Colors.white,
-    marginTop: "13@s",
+    marginTop: "8@s",
   },
   icon: {
-    marginRight: -45,
+    // marginRight: -45,
     position: "absolute",
-    left: "45@s",
-    right: "55@s",
-    top: "40@s",
+    bottom: 0,
+    right: 0,
+    // left: "45@s",
+    // right: "55@s",
+    // top: "40@s",
   },
   compteCardFlex: {
     flexDirection: "row",
@@ -53,7 +55,7 @@ export default ScaledSheet.create({
     backgroundColor: Colors.white,
     borderRadius: "15@s",
     // flexDirection: "row",
-    paddingVertical: "18@s",
+    paddingVertical: "12@s",
     justifyContent: "space-between",
     // alignItems: "flex-end",
     paddingHorizontal: "15@s",
@@ -75,5 +77,37 @@ export default ScaledSheet.create({
     color: Colors.primary700,
     marginTop: "4@s",
     alignSelf: "flex-end",
+  },
+
+  textInputBottomSheet: {
+    height: width * 0.125,
+    borderColor: Colors.grey,
+    borderRadius: "8@s",
+    elevation: 0.75,
+    padding: "10@s",
+    width: width * 0.85,
+    backgroundColor: Colors.white,
+  },
+  containerBottomSheet: {
+    alignSelf: "center",
+  },
+  titleBottomSheet: {
+    fontFamily: "Montserrat_600SemiBold",
+    fontSize: "20@s",
+    alignSelf: "center",
+    textTransform: "capitalize",
+  },
+  actuelleBottomSheet: {
+    fontFamily: "Montserrat_400Regular",
+    fontSize: "10@s",
+  },
+  actuelleValueBottomSheet: {
+    fontFamily: "Montserrat_400Regular",
+    fontSize: "13@s",
+    color: Colors.primary400,
+  },
+  formBottomSheet: {
+    alignSelf: "center",
+    marginVertical: 8,
   },
 });
