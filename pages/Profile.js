@@ -30,11 +30,13 @@ const Profile = ({ navigation }) => {
     );
   }
 
+  // console.log(user.profile);
+
   return (
     <View style={ProfileStyles.container}>
       <TouchableOpacity onPress={() => navigation.navigate("Modifier Profile")}>
         <View style={ProfileStyles.rowFlex}>
-          {user.profile === null ? (
+          {user.profile === undefined ? (
             <Image style={ProfileStyles.imgProfile} source={defaultProfile} />
           ) : (
             <Image

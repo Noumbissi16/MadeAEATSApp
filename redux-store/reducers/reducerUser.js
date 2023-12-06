@@ -6,8 +6,9 @@ const initialState = {
     numeroTelephone: "690277499",
     ville: "Bafoussam",
     profile: null,
+    age: 22,
   },
-  isConnected: true,
+  isConnected: false,
   message: "",
 };
 

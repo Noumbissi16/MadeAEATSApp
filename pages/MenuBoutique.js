@@ -17,7 +17,7 @@ const MenuBoutique = ({ navigation, route }) => {
     } else {
       navigation.navigate("CommanderRepas", {
         menu,
-        restaurant,
+        idRestaurant: restaurant.id,
       });
     }
   };

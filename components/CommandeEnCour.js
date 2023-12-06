@@ -14,8 +14,10 @@ const CommandeEnCour = ({ commande, handleCommandValidation }) => {
             source={commande.img}
           />
         </View>
-        <View>
-          <Text style={CommandStyles.nomPlat}>{commande.nom}</Text>
+        <View style={CommandStyles.horizontalMargin}>
+          <Text style={CommandStyles.nomPlat} numberOfLines={2}>
+            {commande.nom}
+          </Text>
           <Text style={CommandStyles.locPlat}>
             De chez
             <Text style={CommandStyles.nomResto} numberOfLines={1}>

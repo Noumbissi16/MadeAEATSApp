@@ -20,7 +20,7 @@ const Commande = ({ navigation }) => {
 
   const repasCommander = useSelector((state) => state.commande.repasCommander);
 
-  const snapPoints = ["32%"];
+  const snapPoints = ["25%"];
   const bottomSheetRef = useRef(null);
 
   const [idCommande, setIdCommande] = useState();
@@ -117,9 +117,13 @@ const Commande = ({ navigation }) => {
           // // set `detached` to true
           // detached={true}
         >
-          <View>
-            <Text>Livraison effectuer</Text>
-            <Text>Confirmez la reception de votre repas</Text>
+          <View style={CommandStyles.bottomSheetContainer}>
+            <Text style={CommandStyles.bottomSheetTitle}>
+              Livraison effectuer
+            </Text>
+            <Text style={CommandStyles.bottomSheetText}>
+              Confirmez la reception de votre repas
+            </Text>
             <CustomButton
               text={"Valider"}
               handlePress={handleCommandValidation}

@@ -5,13 +5,13 @@ const { width, height } = Dimensions.get("screen");
 export default ScaledSheet.create({
   inputFlex: {
     alignItems: "flex-start",
-    marginTop: width * 0.0175,
+    marginTop: width * 0.015,
     // alignSelf: "center",
   },
   inputText: {
     fontFamily: "Montserrat_500Medium",
     fontSize: "13@s",
-    marginBottom: "5@s",
+    marginBottom: "3@s",
   },
   textConnexion: {
     fontFamily: "Montserrat_600SemiBold",
@@ -64,10 +64,10 @@ export default ScaledSheet.create({
     backgroundColor: Colors.white,
   },
   pageTitle: {
-    fontSize: "30@s",
+    fontSize: "28@s",
     color: Colors.black,
     fontFamily: "Montserrat_600SemiBold",
-    marginBottom: "12@s",
+    marginBottom: "8@s",
   },
   container: {
     backgroundColor: Colors.background,

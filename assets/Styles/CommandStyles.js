@@ -36,7 +36,7 @@ export default ScaledSheet.create({
   imgPlat: {
     width: width * 0.175,
     height: width * 0.175,
-    resizeMode: "contain",
+    // resizeMode: "contain",
     borderRadius: "8@s",
   },
   imgContainer: {
@@ -46,29 +46,34 @@ export default ScaledSheet.create({
     elevation: 4,
     alignItems: "center",
     justifyContent: "center",
-    marginLeft: "18@s",
+    // marginLeft: "18@s",
     borderRadius: "12@s",
-    // marginRight: width * 0.075,
+    marginRight: 8,
   },
   nomPlat: {
     fontFamily: "Montserrat_600SemiBold",
     fontSize: "18@s",
+    textAlign: "center",
+    // display: "flex",
     // textAlign: "center",
     // alignSelf: "flex-start",
+    // flexWrap: "wrap",
   },
   nomResto: {
     fontFamily: "Montserrat_500Medium",
     color: Colors.secondary600,
-    width: "5@s",
+    // width: "5@s",
   },
   rowFlex: {
     flexDirection: "row",
-    // alignItems: "flex-start",
-    // flexWrap: "wrap",
-    justifyContent: "center",
+    // // alignItems: "flex-start",
+    // // flexWrap: "wrap",
+    // justifyContent: "center",
     alignItems: "center",
-    width: width * 0.85,
-    alignSelf: "center",
+    // width: width * 0.75,
+    // alignSelf: "center",
+    // paddingHorizontal: width * 0.055,
+    paddingHorizontal: 15,
   },
   locPlat: {
     fontFamily: "Montserrat_300Light",
@@ -114,6 +119,9 @@ export default ScaledSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
+  },
+  horizontalMargin: {
+    // marginHorizontal: 25,
   },
   dateCommande: {
     fontFamily: "Montserrat_300Light",
@@ -164,5 +172,22 @@ export default ScaledSheet.create({
     // borderColor: Colors.secondary100,
     // borderWidth: 1,
     textAlign: "center",
+  },
+
+  bottomSheetContainer: {
+    alignSelf: "center",
+  },
+  bottomSheetTitle: {
+    fontFamily: "Montserrat_600SemiBold",
+    fontSize: "18@s",
+    alignSelf: "center",
+  },
+  bottomSheetText: {
+    fontFamily: "Montserrat_400Regular",
+    fontSize: "12@s",
+    color: Colors.grey,
+    lineHeight: 12,
+    marginVertical: 15,
+    alignSelf: "center",
   },
 });

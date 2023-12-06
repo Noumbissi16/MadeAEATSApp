@@ -22,6 +22,7 @@ const Inscription = ({ navigation }) => {
   const [nom, setNom] = useState("");
   const [email, setEmail] = useState("");
   const [age, setAge] = useState();
+  const [ville, setVille] = useState();
   const [motDePasse, setMotDePasse] = useState("");
   const [showMotDePasse, setShowMotDePasse] = useState(false);
   const toggleShowMotDePasse = () => {
@@ -33,6 +34,8 @@ const Inscription = ({ navigation }) => {
     nom,
     email,
     motDePasse,
+    age,
+    ville,
   };
 
   const handleInscription = () => {
@@ -66,17 +69,7 @@ const Inscription = ({ navigation }) => {
               />
             </KeyboardAvoidingView>
           </View>
-          {/* <View style={InscriptionStyles.inputFlex}>
-            <KeyboardAvoidingView>
-              <Text style={InscriptionStyles.inputText}>Age</Text>
-              <TextInput
-                style={InscriptionStyles.textInput}
-                value={age}
-                onChangeText={(text) => setAge(text)}
-                keyboardType="number-pad"
-              />
-            </KeyboardAvoidingView>
-          </View> */}
+
           <View style={InscriptionStyles.inputFlex}>
             <KeyboardAvoidingView>
               <Text style={InscriptionStyles.inputText}>Mots de passe</Text>
@@ -98,6 +91,27 @@ const Inscription = ({ navigation }) => {
                   />
                 </TouchableOpacity>
               </View>
+            </KeyboardAvoidingView>
+          </View>
+          <View style={InscriptionStyles.inputFlex}>
+            <KeyboardAvoidingView>
+              <Text style={InscriptionStyles.inputText}>Age</Text>
+              <TextInput
+                style={InscriptionStyles.textInput}
+                value={age}
+                onChangeText={(text) => setAge(text)}
+                keyboardType="number-pad"
+              />
+            </KeyboardAvoidingView>
+          </View>
+          <View style={InscriptionStyles.inputFlex}>
+            <KeyboardAvoidingView>
+              <Text style={InscriptionStyles.inputText}>Ville</Text>
+              <TextInput
+                style={InscriptionStyles.textInput}
+                value={ville}
+                onChangeText={(text) => setVille(text)}
+              />
             </KeyboardAvoidingView>
           </View>
           <View style={{ alignItems: "center" }}>
