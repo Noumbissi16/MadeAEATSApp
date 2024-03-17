@@ -1,9 +1,18 @@
-import { View, Text, Image, TouchableOpacity, TextInput } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  TextInput,
+  ActivityIndicator,
+} from "react-native";
 import React, { useState } from "react";
 import PayerRepasStyles from "../assets/Styles/PayerRepasStyles";
 import { Dropdown } from "react-native-element-dropdown";
 import { useDispatch } from "react-redux";
 import { ajouterCommande } from "../redux-store/actions/commande/ajouterCommande";
+import { validerCommande } from "../redux-store/actions/commande/validerCommande";
+import Colors from "../assets/Colors/Colors";
 
 const PayementRepas = ({ navigation, route }) => {
   const pathOM = require("../assets/images/Orange_Money_logo_PNG-1.png");
@@ -18,6 +27,7 @@ const PayementRepas = ({ navigation, route }) => {
   const [phoneNumber, setPhoneNumber] = useState();
   const [numberErr, setNumberErr] = useState(false);
   const [lieuLivraison, setLieuLivraison] = useState();
+  const [isLoading, setIsLoading] = useState(false);
 
   const validatePhoneNumber = (phoneNumber) => {
     // const orangePattern = /^(6|2)\d{8}$/;
@@ -41,11 +51,13 @@ const PayementRepas = ({ navigation, route }) => {
 
   const dispatch = useDispatch();
 
-  const handlePayment = () => {
+  const handlePayment = async () => {
+    setIsLoading(true);
     validatePhoneNumber(phoneNumber);
-    dispatch(ajouterCommande(commandeAjouter));
+    // dispatch(ajouterCommande(commandeAjouter));
+    await dispatch(validerCommande(commanderRepasInfo.id));
+    setIsLoading(false);
     navigation.navigate("Commande");
-    // console.log(commandeAjouter);
   };
 
   const commanderRepasInfo = route.params.commanderRepasInfo;
@@ -134,7 +146,11 @@ const PayementRepas = ({ navigation, route }) => {
       </View>
 
       <TouchableOpacity style={PayerRepasStyles.btn} onPress={handlePayment}>
-        <Text style={PayerRepasStyles.btnText}>Valider</Text>
+        {isLoading ? (
+          <ActivityIndicator size={"small"} color={Colors.white} />
+        ) : (
+          <Text style={PayerRepasStyles.btnText}>Valider</Text>
+        )}
       </TouchableOpacity>
     </View>
   );

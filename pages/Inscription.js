@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   ScrollView,
+  ActivityIndicator,
 } from "react-native";
 import React, { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
@@ -14,7 +15,9 @@ import { Ionicons } from "@expo/vector-icons";
 import AppStyles from "../assets/Styles/AppStyles";
 import InscriptionStyles from "../assets/Styles/InscriptionStyles";
 import { useDispatch } from "react-redux";
-import { addUser } from "../redux-store/actions/User/addUser";
+import axios from "axios";
+import { actionSignup } from "../redux-store/actions/User/addUser";
+import Colors from "../assets/Colors/Colors";
 //
 const { width } = Dimensions.get("screen");
 
@@ -25,6 +28,8 @@ const Inscription = ({ navigation }) => {
   const [ville, setVille] = useState();
   const [motDePasse, setMotDePasse] = useState("");
   const [showMotDePasse, setShowMotDePasse] = useState(false);
+  const [isLoading, setisLoading] = useState(false);
+  const [errMsg, seterrMsg] = useState("");
   const toggleShowMotDePasse = () => {
     setShowMotDePasse(!showMotDePasse);
   };
@@ -38,8 +43,28 @@ const Inscription = ({ navigation }) => {
     ville,
   };
 
-  const handleInscription = () => {
-    dispatch(addUser(user));
+  const handleInscription = async () => {
+    seterrMsg("");
+    if (
+      nom.length > 0 &&
+      email.length > 0 &&
+      age.length > 0 &&
+      ville.length > 0 &&
+      motDePasse.length > 0
+    ) {
+      setisLoading(true);
+      try {
+        await dispatch(actionSignup(user));
+        setisLoading(false);
+      } catch (error) {
+        console.log("error", error.message);
+        seterrMsg(error.message);
+        setisLoading(false);
+      }
+      setisLoading(false);
+    } else {
+      alert("Veuillez remplir tous les champs");
+    }
   };
 
   return (
@@ -47,6 +72,7 @@ const Inscription = ({ navigation }) => {
       <View style={AppStyles.contentMargin}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <Text style={InscriptionStyles.pageTitle}>Inscrivez-vous</Text>
+          {errMsg && <Text style={InscriptionStyles.errMsg}>{errMsg}</Text>}
           <View style={InscriptionStyles.inputFlex}>
             <KeyboardAvoidingView>
               <Text style={InscriptionStyles.inputText}>Nom</Text>
@@ -114,14 +140,16 @@ const Inscription = ({ navigation }) => {
               />
             </KeyboardAvoidingView>
           </View>
-          <View style={{ alignItems: "center" }}>
-            <TouchableOpacity
-              onPress={handleInscription}
-              style={InscriptionStyles.button}
-            >
-              <Text style={InscriptionStyles.buttonText}>S'inscrire</Text>
-            </TouchableOpacity>
+          <View style={InscriptionStyles.button}>
+            {isLoading ? (
+              <ActivityIndicator size="small" color={Colors.white} />
+            ) : (
+              <TouchableOpacity onPress={handleInscription}>
+                <Text style={InscriptionStyles.buttonText}>S'inscrire</Text>
+              </TouchableOpacity>
+            )}
           </View>
+
           <TouchableOpacity
             style={{
               display: "flex",

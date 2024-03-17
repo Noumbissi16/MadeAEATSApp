@@ -55,13 +55,14 @@ export default ScaledSheet.create({
     height: width * 0.125,
     borderColor: Colors.grey,
     borderRadius: "8@s",
-    shadowColor: "rgba(0, 0, 0, 0.25);",
-    shadowRadius: 4,
-    shadowOpacity: 0.25,
-    elevation: 2.5,
+    // shadowColor: "rgba(0, 0, 0, 0.25);",
+    // shadowRadius: 4,
+    // shadowOpacity: 0.25,
+    // elevation: 2.5,
     padding: "10@s",
     width: width * 0.85,
     backgroundColor: Colors.white,
+    borderWidth: 1,
   },
   pageTitle: {
     fontSize: "28@s",
@@ -93,5 +94,10 @@ export default ScaledSheet.create({
   imgMedia: {
     width: "22@s",
     resizeMode: "contain",
+  },
+  errMsg: {
+    color: "red",
+    fontSize: "12@s",
+    fontFamily: "Montserrat_400Regular",
   },
 });

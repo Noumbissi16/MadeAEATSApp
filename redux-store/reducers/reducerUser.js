@@ -1,20 +1,14 @@
+import { ADD_USER, CHECK_USER, LOGOUT_USER, MODIFY_USER } from "../constant";
+
 const initialState = {
-  user: {
-    nom: "Noumbissi Stael",
-    email: "noumbissistael@gmail.com",
-    motDePasse: "123456789",
-    numeroTelephone: "690277499",
-    ville: "Bafoussam",
-    profile: null,
-    age: 22,
-  },
+  user: {},
   isConnected: false,
   message: "",
 };
 
 const reducerUser = (state = initialState, action) => {
   switch (action.type) {
-    case "ADD_USER":
+    case ADD_USER:
       const user = action.user;
       return {
         ...state,
@@ -22,7 +16,7 @@ const reducerUser = (state = initialState, action) => {
         isConnected: true,
       };
 
-    case "CHECK_USER":
+    case CHECK_USER:
       const userInfo = action.user;
       const loggedUser = state.user;
       if (loggedUser.email !== userInfo.email) {
@@ -42,7 +36,7 @@ const reducerUser = (state = initialState, action) => {
         };
       }
 
-    case "MODIFY_USER":
+    case MODIFY_USER:
       const propertyToUpdate = action.user.property;
       const updatedValue = action.user.value;
       const userProp = { ...state.user };
@@ -78,6 +72,11 @@ const reducerUser = (state = initialState, action) => {
             user: userProp,
           };
       }
+
+    case LOGOUT_USER:
+      return {
+        initialState,
+      };
 
     default:
       return state;

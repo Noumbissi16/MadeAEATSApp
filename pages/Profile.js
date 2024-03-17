@@ -17,20 +17,24 @@ import {
 } from "@expo/vector-icons";
 import Colors from "../assets/Colors/Colors";
 import { scale } from "react-native-size-matters";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import actionLogout from "../redux-store/actions/User/actionLogout";
 
 const Profile = ({ navigation }) => {
   const user = useSelector((state) => state.user.user);
   const defaultProfile = require("../assets/images/DefaultProfil.jpg");
+  const dispatch = useDispatch();
 
   function handleContactUS() {
     // Linking.openURL("whatsapp://app");
     Linking.openURL(
-      "whatsapp://send?text=Bonjour, s'il vous plait, j'aurais une question...&phone=+237696938017"
+      "whatsapp://send?text=Bonjour, s'il vous plait, j'aurais une question...&phone=+237690277499"
     );
   }
 
-  // console.log(user.profile);
+  const handleLogout = () => {
+    dispatch(actionLogout());
+  };
 
   return (
     <View style={ProfileStyles.container}>
@@ -80,6 +84,21 @@ const Profile = ({ navigation }) => {
           <FontAwesome5 name="store-alt" size={scale(28)} color="black" />
           <View>
             <Text style={ProfileStyles.titre}>Gerez votre restaurant</Text>
+          </View>
+          <FontAwesome name="caret-right" size={32} color={Colors.black} />
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={handleLogout}>
+        <View style={ProfileStyles.rowFlex}>
+          {/* <MaterialIcons name="add-business" size={scale(35)} color="black" /> */}
+          {/* <MaterialCommunityIcons
+            name="store-settings"
+            size={scale(35)}
+            color="black"
+          /> */}
+          <FontAwesome5 name="store-alt" size={scale(28)} color="black" />
+          <View>
+            <Text style={ProfileStyles.titre}>Deconexion</Text>
           </View>
           <FontAwesome name="caret-right" size={32} color={Colors.black} />
         </View>

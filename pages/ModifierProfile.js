@@ -30,7 +30,12 @@ const ModifierProfile = () => {
       return;
     }
 
-    const result = await ImagePicker.launchImageLibraryAsync();
+    const result = await ImagePicker.launchImageLibraryAsync({
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 0.5,
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+    });
 
     if (!result.canceled) {
       setImageURI(result.assets[0].uri);

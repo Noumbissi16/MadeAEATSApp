@@ -65,13 +65,11 @@ const Commande = ({ navigation }) => {
     <BottomSheetModalProvider>
       <View style={CommandStyles.container}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <Text style={CommandStyles.statusCommande}>
+          {/* <Text style={CommandStyles.statusCommande}>
             En cours de livraison
           </Text>
 
-          {commandeEnCour.length > 0 ? (
-            <View />
-          ) : (
+          {commandeEnCour.length > 0 && (
             <Text style={CommandStyles.emptyTxt}>
               Aucune Commande en cours de livraison mais vous pouvez passer une
               commande
@@ -84,7 +82,7 @@ const Commande = ({ navigation }) => {
               commande={commande}
               handleCommandValidation={() => openModal(commande.idCommande)}
             />
-          ))}
+          ))} */}
 
           <Text style={CommandStyles.statusCommande}>Commande récente</Text>
 
@@ -106,7 +104,7 @@ const Commande = ({ navigation }) => {
           ))}
         </ScrollView>
 
-        <BottomSheetModal
+        {/* <BottomSheetModal
           ref={bottomSheetRef}
           index={0}
           snapPoints={snapPoints}
@@ -129,7 +127,7 @@ const Commande = ({ navigation }) => {
               handlePress={handleCommandValidation}
             />
           </View>
-        </BottomSheetModal>
+        </BottomSheetModal> */}
       </View>
     </BottomSheetModalProvider>
   );

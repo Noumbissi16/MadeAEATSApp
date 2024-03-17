@@ -1,8 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
-import { useCallback } from "react";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Provider } from "react-redux";
+import { useCallback, useEffect } from "react";
+import { Provider, useDispatch } from "react-redux";
 import * as SplashScreen from "expo-splash-screen";
 import {
   useFonts,
@@ -29,12 +28,12 @@ import {
 import store from "./redux-store/store";
 import Navigation from "./navigation/navigation";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { actionFetchAllRestaurant } from "./redux-store/actions/restaurant/actionFetchAllRestaurant";
 
 //
 // for splash screen to load all app content before stop displaying
 SplashScreen.preventAutoHideAsync();
 // for navigation
-const Stack = createNativeStackNavigator();
 //
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -56,6 +55,12 @@ export default function App() {
     Montserrat_700Bold_Italic,
     Montserrat_800ExtraBold_Italic,
     Montserrat_900Black_Italic,
+  });
+
+  const dispatch = useDispatch();
+
+  useEffect(async () => {
+    await dispatch(actionFetchAllRestaurant());
   });
 
   const onLayoutRootView = useCallback(async () => {

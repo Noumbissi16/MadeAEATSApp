@@ -8,6 +8,7 @@ import {
   Image,
   ScrollView,
   KeyboardAvoidingView,
+  ActivityIndicator,
 } from "react-native";
 import React, { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
@@ -16,38 +17,47 @@ import Colors from "../assets/Colors/Colors";
 import InscriptionStyles from "../assets/Styles/InscriptionStyles";
 import AppStyles from "../assets/Styles/AppStyles";
 import { useDispatch, useSelector } from "react-redux";
-import { checkUser } from "../redux-store/actions/User/checkUser";
+import { actionLogin, checkUser } from "../redux-store/actions/User/checkUser";
 //
 const { width } = Dimensions.get("screen");
 const Connexion = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [motDePasse, setMotDePasse] = useState("");
   const [showMotDePasse, setShowMotDePasse] = useState(false);
+  const [isLoading, setisLoading] = useState(false);
+  const [errMsg, seterrMsg] = useState("");
 
   const toggleShowMotDePasse = () => {
     setShowMotDePasse(!showMotDePasse);
   };
-
   const user = {
     email,
     motDePasse,
   };
   const dispatch = useDispatch();
-  const message = useSelector((state) => state.user.message);
 
-  const handleConnexion = () => {
-    dispatch(checkUser(user));
+  const handleConnexion = async () => {
+    seterrMsg("");
+    if (email.length > 0 && motDePasse.length > 0) {
+      setisLoading(true);
+      try {
+        await dispatch(actionLogin(user));
+        setisLoading(false);
+      } catch (error) {
+        // console.log("error", error.message);
+        seterrMsg(error.message);
+        setisLoading(false);
+      }
+    } else {
+      alert("Veuillez remplir tous les champs");
+    }
   };
   return (
     <View style={InscriptionStyles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={AppStyles.contentMargin}>
           <Text style={InscriptionStyles.pageTitle}>Connexion</Text>
-          {message ? (
-            <Text style={InscriptionStyles.inputText}>{message}</Text>
-          ) : (
-            <View />
-          )}
+          {errMsg && <Text style={InscriptionStyles.errMsg}>{errMsg}</Text>}
 
           <View style={InscriptionStyles.inputFlex}>
             <KeyboardAvoidingView>
@@ -87,13 +97,14 @@ const Connexion = ({ navigation }) => {
               </View>
             </KeyboardAvoidingView>
           </View>
-          <View style={{ alignItems: "center" }}>
-            <TouchableOpacity
-              onPress={handleConnexion}
-              style={InscriptionStyles.button}
-            >
-              <Text style={InscriptionStyles.buttonText}>Connexion</Text>
-            </TouchableOpacity>
+          <View style={InscriptionStyles.button}>
+            {isLoading ? (
+              <ActivityIndicator size="small" color={Colors.white} />
+            ) : (
+              <TouchableOpacity onPress={handleConnexion}>
+                <Text style={InscriptionStyles.buttonText}>Connexion</Text>
+              </TouchableOpacity>
+            )}
           </View>
           <TouchableOpacity
             style={{
