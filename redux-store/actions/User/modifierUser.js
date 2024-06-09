@@ -1,8 +1,8 @@
-import { MODIFY_USER } from "../../constant";
+// import { MODIFY_USER } from "../../constant";
 
-export const modifyUser = (user) => {
-  return {
-    type: MODIFY_USER,
-    user,
-  };
-};
+// export const modifyUser = (user) => {
+//   return {
+//     type: MODIFY_USER,
+//     user,
+//   };
+// };

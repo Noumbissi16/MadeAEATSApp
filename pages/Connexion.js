@@ -17,8 +17,11 @@ import Colors from "../assets/Colors/Colors";
 import InscriptionStyles from "../assets/Styles/InscriptionStyles";
 import AppStyles from "../assets/Styles/AppStyles";
 import { useDispatch, useSelector } from "react-redux";
-import { actionLogin, checkUser } from "../redux-store/actions/User/checkUser";
+import { UserApi } from "../api/user-api";
+import { setUser } from "../redux-store/User/userSlice";
+// import { actionLogin, checkUser } from "../redux-store/actions/User/checkUser";
 //
+
 const { width } = Dimensions.get("screen");
 const Connexion = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -41,7 +44,10 @@ const Connexion = ({ navigation }) => {
     if (email.length > 0 && motDePasse.length > 0) {
       setisLoading(true);
       try {
-        await dispatch(actionLogin(user));
+        // await dispatch(actionLogin(user));
+        const apiResponse = await UserApi.signInUser(user);
+        console.log("siginuser", apiResponse);
+        dispatch(setUser(apiResponse));
         setisLoading(false);
       } catch (error) {
         // console.log("error", error.message);

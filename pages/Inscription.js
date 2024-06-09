@@ -15,9 +15,10 @@ import { Ionicons } from "@expo/vector-icons";
 import AppStyles from "../assets/Styles/AppStyles";
 import InscriptionStyles from "../assets/Styles/InscriptionStyles";
 import { useDispatch } from "react-redux";
-import axios from "axios";
-import { actionSignup } from "../redux-store/actions/User/addUser";
 import Colors from "../assets/Colors/Colors";
+import { actionSignup } from "../redux-store/actions/User/actionSignup";
+import { UserApi } from "../api/user-api";
+import { setUser } from "../redux-store/User/userSlice";
 //
 const { width } = Dimensions.get("screen");
 
@@ -54,7 +55,10 @@ const Inscription = ({ navigation }) => {
     ) {
       setisLoading(true);
       try {
-        await dispatch(actionSignup(user));
+        // await dispatch(actionSignup(user));
+        const apiResponse = await UserApi.signUpUser(user);
+        console.log("signupuser", apiResponse);
+        dispatch(setUser(apiResponse));
         setisLoading(false);
       } catch (error) {
         console.log("error", error.message);

@@ -60,7 +60,7 @@ export default function App() {
   const dispatch = useDispatch();
 
   useEffect(async () => {
-    await dispatch(actionFetchAllRestaurant());
+    // await dispatch(actionFetchAllRestaurant());
   });
 
   const onLayoutRootView = useCallback(async () => {
@@ -81,14 +81,14 @@ export default function App() {
     return null;
   }
   return (
-    <Provider store={store}>
-      <View style={styles.container} onLayout={onLayoutRootView}>
-        <GestureHandlerRootView style={{ flex: 1 }}>
-          <StatusBar style="auto" />
+    <View style={styles.container} onLayout={onLayoutRootView}>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <StatusBar style="auto" />
+        <Provider store={store}>
           <Navigation />
-        </GestureHandlerRootView>
-      </View>
-    </Provider>
+        </Provider>
+      </GestureHandlerRootView>
+    </View>
   );
 }
 
